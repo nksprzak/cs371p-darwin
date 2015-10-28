@@ -81,7 +81,7 @@ int main () {
     Hopper, facing south, at (4, 4)
     Hopper, facing west,  at (4, 3)
     Food,   facing north, at (7, 7)
-    Simulate 5 moves.
+    Simulate 5 moves. 
     Print every grid.
     */
 
