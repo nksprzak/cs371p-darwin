@@ -6,6 +6,9 @@
 #include <cstddef>    // ptrdiff_t, size_t
 #include <new>        // bad_alloc, new
 #include <stdexcept>  // invalid_argument
+#include <iostream>
+#include <vector>
+#include <cstdlib>
 
 
 #ifndef Darwin_h
@@ -13,26 +16,41 @@
 
 using namespace std;
 
+class Darwin;
+class Creature;
+
+class Species {
+private:
+	vector<string> instructions;
+public:
+	char letter;
+
+	Species(char);
+
+	int execute(Darwin* darwin, Creature* creature, int pc, int direction, int x, int y);
+
+	void addInstruction(string i);
+};
+
+
 class Creature {
 public:
-	Species sp;
-	int loc_x;
-	int loc_y;
+	Species *sp;
 	int program_counter;
 	int direction;
-	Darwin* world
 
-	Creature(Darwin* d, Species s, int direction, int x, int y) {
-		world = d;
+	Creature(Species *s, int direction) {
 		sp = s;
-		this.direction = direction;
-		loc_y = y;
-		loc_x = x;
+		this->direction = direction;
 		program_counter = 0;
 	}
 
+	void turn(Darwin* d, int x, int y);
 
-private:
+	void turn_left();
+	void turn_right();
+
+/*private:
 	void if_empty(int pc);
 	void if_wall(int pc);
 	void if_random(int pc){
@@ -43,29 +61,29 @@ private:
 	void hop();
 	void right();
 	void left();
-	void infect(Creature i);
+	void infect(Creature i);*/
 };
 
-class Species {
-private:
-	vector<string> instructions;
-public:
-	char letter;
-
-	Species();
-
-	void addInstruction(string i);
-};
 
 class Darwin {
 public:
-	//Creature* grid;
-	vector<vector<Creature>> grid;
+	//vector<vector<Creature > > grid;
+
+	vector < vector <Creature *> >  grid;
 	
+
+	int row;
+	int col;
 
 	Darwin(int x, int y);
 
 	void printGrid();
+
+	void addCreature(Creature *c, int x , int y);
+
+	void run(int x);
+
+	void hop(int direction, int x, int y);
 
 	bool is_wall_at(int x, int y);
 
