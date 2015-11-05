@@ -9,6 +9,7 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib>
+#include <sstream>
 
 
 #ifndef Darwin_h
@@ -20,24 +21,26 @@ class Darwin;
 class Creature;
 
 class Species {
-private:
-	vector<string> instructions;
 public:
+	vector<string> instructions;
+
 	char letter;
 
 	Species(char);
 
-	int execute(Darwin* darwin, Creature* creature, int pc, int direction, int x, int y);
+	//int execute(Darwin* darwin, Creature* creature, int pc, int direction, int x, int y);
 
 	void addInstruction(string i);
 };
 
 
 class Creature {
+
 public:
-	Species *sp;
 	int program_counter;
 	int direction;
+
+	Species *sp;
 
 	Creature(Species *s, int direction) {
 		sp = s;
@@ -49,24 +52,12 @@ public:
 
 	void turn_left();
 	void turn_right();
-
-/*private:
-	void if_empty(int pc);
-	void if_wall(int pc);
-	void if_random(int pc){
-		if(rand()%2)
-			program_counter = pc; 
-	}
-	void if_enemy(int pc);
-	void hop();
-	void right();
-	void left();
-	void infect(Creature i);*/
+	void go(int x);
 };
 
 
 class Darwin {
-public:
+private:
 	//vector<vector<Creature > > grid;
 
 	vector < vector <Creature *> >  grid;
@@ -74,6 +65,7 @@ public:
 
 	int row;
 	int col;
+public:
 
 	Darwin(int x, int y);
 
@@ -81,7 +73,11 @@ public:
 
 	void addCreature(Creature *c, int x , int y);
 
+	void infect(Creature *c, int x, int y);
+
 	void run(int x);
+
+	void creature_turn(Creature *c, int x, int y);
 
 	void hop(int direction, int x, int y);
 
