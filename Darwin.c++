@@ -57,11 +57,11 @@ bool Darwin::is_wall_at(int x, int y)
 
 
 
-void Darwin::infect(Species* sp, int x, int y)
+void Darwin::infect(Species* sp, Creature* c, int x, int y)
 {
 	if(!is_wall_at(x, y))
 	{
-		if(is_empty(x,y)) //should be is_enemy
+		if(is_enemy(c, x,y)) //should be is_enemy
 			grid[y][x]->infect(sp);
 	}
 	// Creature* to_infect = grid[y][x];
@@ -149,10 +149,6 @@ void Darwin::run(int x)
 	}
 }
 
-bool Darwin::is_enemy(int x, int y, Creature* c)
-{
-	return false;
-}
 
 Darwin::Darwin(int x, int y)
 {
@@ -184,16 +180,19 @@ void Species::addInstruction(string i)
 }*/
 
 
-bool Darwin::enemy(Species *sp, int x, int y)
+bool Darwin::is_enemy(Creature *c, int x, int y)
 {
+	Creature& cr = *c;
+
+	if(!is_wall_at(x, y))
+		if(!is_empty(x,y))
+		{
+			Creature& n = *grid[y][x];
+			return !(cr == n);
+		}
 	return false;
 }
 
-bool Darwin::empty(int x, int y)
-{
-	//return (grid[y][x] == nullptr);
-	return true;
-}
 
 int Species::execute(Darwin* darwin, Creature* creature, int pc, int direction, int x, int y)
 {
@@ -239,7 +238,7 @@ int Species::execute(Darwin* darwin, Creature* creature, int pc, int direction, 
 		if(exe_parsed[0] == "if_enemy")
 		{
 			cout << "enemy check" << endl;
-			if(darwin->is_enemy(x_fwd, y_fwd, creature))
+			if(darwin->is_enemy(creature, x_fwd, y_fwd))
 				pc = stoi(exe_parsed[1]);
 			else ++pc;
 			//return 
@@ -275,7 +274,7 @@ int Species::execute(Darwin* darwin, Creature* creature, int pc, int direction, 
 		}
 		if(exe == "infect")
 		{
-			darwin->infect(this,x_fwd,y_fwd);
+			darwin->infect(this, creature, x_fwd,y_fwd);
 			return ++pc;
 		}	
 	}

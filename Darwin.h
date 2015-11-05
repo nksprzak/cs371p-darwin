@@ -60,6 +60,11 @@ public:
 	void infect(Species* newsp);
 //	string control(string contr, int pc_change);
 
+	friend bool operator == (const Creature& lhs, const Creature& rhs)
+	{
+		return lhs.sp == rhs.sp;
+	}
+
 };
 
 
@@ -86,7 +91,7 @@ public:
 
 	void addCreature(Creature *c, int x , int y);
 
-	void infect(Species *s, int x, int y);
+	void infect(Species *s, Creature* c, int x, int y);
 
 	bool enemy(Species* sp, int x,int y);
 
@@ -102,7 +107,7 @@ public:
 
 	bool is_empty(int x, int y);
 
-	bool is_enemy(int x, int y, Creature* c);
+	bool is_enemy(Creature* c, int x, int y);
 
 	Creature* creature_at(int direction, int x, int y);
 
