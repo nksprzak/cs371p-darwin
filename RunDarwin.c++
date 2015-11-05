@@ -98,6 +98,42 @@ int main () {
     trap.addInstruction("infect");
     trap.addInstruction("go 0");
 
+    // ----
+    // best
+    // ----
+
+    /*
+     0. if_enemy 10
+     1. if_empty 4
+     3. left
+     4. go 0
+     5. if_random 
+     6. if_random
+     7. if_random
+     8. if_random
+     9. left
+     10. go 0
+     11. hop
+     12. go 0
+     13.infect
+     14. go 0
+     */
+    Species best = Species('b');
+    best.addInstruction("if_enemy 12");
+    best.addInstruction("if_empty 4");
+    best.addInstruction("left");
+    best.addInstruction("go 0");
+    best.addInstruction("if_random 10");
+    best.addInstruction("if_random 10");
+    best.addInstruction("if_random 10");
+    best.addInstruction("if_random 10");
+    best.addInstruction("left");
+    best.addInstruction("go 0");
+    best.addInstruction("hop");
+    best.addInstruction("go 0");
+    best.addInstruction("infect");
+    best.addInstruction("go 0");
+
     // ----------
     // darwin 8x8
     // ----------
@@ -226,6 +262,47 @@ int main () {
 
     cout << "*** Darwin 72x72 with Best ***" << endl;
     srand(0);
+    Darwin z4 = Darwin(72,72);
+
+    for(int i = 0; i < 10; i++)
+    {
+        int direct = rand() % 4;
+        int pos = rand() % 5184;
+        foods[i]= Creature(&food,direct);
+        z4.addCreature(&foods[i],pos/72,pos%72);
+    }
+    for(int i = 0; i < 10; i++)
+    {
+        int direct = rand() % 4;
+        int pos = rand() % 5184;
+        hops[i] = Creature(&hopper,direct);
+        z4.addCreature(&hops[i],pos/72,pos%72);
+    }
+    for(int i = 0; i < 10; i++)
+    {
+        int direct = rand() % 4;
+        int pos = rand() % 5184;
+        rovers[i] = Creature(&rover,direct);
+        z4.addCreature(&rovers[i],pos/72,pos%72);
+    }
+    for(int i = 0; i < 10; i++)
+    {
+        int direct = rand() % 4;
+        int pos = rand() % 5184;
+        traps[i] = Creature(&trap,direct);
+        z4.addCreature(&traps[i],pos/72,pos%72);
+    }
+    Creature bests[10];
+    for(int i = 0; i < 10; i++)
+    {
+        int direct = rand() % 4;
+        int pos = rand() % 5184;
+        bests[i] = Creature(&best,direct);
+        z4.addCreature(&bests[i],pos/72,pos%72);
+    }
+    
+
+    z4.run(10);
     /*
     Randomly place the following creatures facing randomly.
     Call rand(), mod it with 5184 (72x72), and use that for the position
