@@ -8,11 +8,12 @@ void Darwin::printGrid()
 		cout << i%10;
 	}
 	cout << endl;
-	for(int j = 0; j < row; j++)
+	for(int j = 0; j < col; j++)
 	{
 		cout << j%10;
-		for(int k = 0; k < col; k++)
+		for(int k = 0; k < row; k++)
 		{
+			//assert(grid[j][k]);
 			if(grid[j][k] == nullptr)
 			{
 				cout << ".";
@@ -42,7 +43,7 @@ Darwin::Darwin(int x, int y)
 {
 	this->row = x;
 	this->col = y;
-	vector<vector<Creature *>> grida(y,vector<Creature *>(x,nullptr));
+	vector<vector<Creature *>> grida(y+10,vector<Creature *>(x+10,nullptr));
 
 	this->grid = grida;
 		
@@ -62,7 +63,24 @@ void Darwin::run(int x)
 		{
 			for(int k = 0; k < col; k++ )
 			{
-				if(grid[j][k]) grid[j][k]->turn(this,k,j);
+				//assert(grid[j][k]->seen);
+				if(grid[j][k])
+				{
+					//cout << j << " " << k << endl;
+					
+					if(!grid[j][k]->seen) grid[j][k]->turn(this,k,j);
+					//grid[j][k]->seen = true;
+				} 
+			}
+		}
+		for(int j = 0; j < row; j++)
+		{
+			for(int k = 0; k < col; k++)
+			{
+				if(grid[j][k])
+				{
+					grid[j][k]->seen = false;
+				}
 			}
 		}
 		printGrid();
@@ -103,17 +121,23 @@ int Species::execute(Darwin* darwin, Creature* creature, int pc, int direction, 
 		//cout << word << endl;
 	}
 
-	cout << creature->program_counter;
+	//cout << creature->program_counter;
 	if(exe_parsed[0] == "go")
 	{
-		///cout << exe_parsed[0];
-		//exe = creature->control(exe_parsed[0],stoi(exe_parsed[1]));
-		//exe = creature->sp->instructions[0];
-		//exe = instructions[0];
-		//string exe_n = instructions[0];
-		//cout << instructions[0];
-		//return execute(darwin,creature,0,direction,x,y);
 		return 0;
+	}
+
+	if(exe_parsed[0] == "if_enemy")
+	{
+		//return 
+	}
+	if(exe_parsed[0] == "if_empty")
+	{
+
+	}
+	if(exe_parsed[0] == "if_random")
+	{
+
 	}
 	//cout << exe_parsed[1];
 	if(exe == "left")
@@ -137,6 +161,7 @@ int Species::execute(Darwin* darwin, Creature* creature, int pc, int direction, 
 		return ++pc;
 	}
 
+	//return 0;
 	
 }
 
@@ -163,7 +188,13 @@ void Darwin::hop(int direction, int x, int y)
 		x_fwd = x;
 		y_fwd = y + direction - 2;
 	}
-	if(grid[y_fwd][x_fwd] == 0 && (y_fwd > 0 || x_fwd > 0) || (y_fwd < row && x_fwd < col))
+
+
+	cout << x_fwd << " " << y_fwd << endl;
+	if(y_fwd == row || x_fwd == col) cout << "";
+
+
+	else if(grid[y_fwd][x_fwd] == 0 && !(y_fwd < 0 || x_fwd < 0))
 	{
 		grid[y_fwd][x_fwd] = grid[y][x];
 		grid[y][x] = nullptr;
@@ -185,10 +216,19 @@ void Creature::turn(Darwin* d, int x, int y)
 {
 
 	string check = sp->instructions[program_counter];
-
-	if(check == "go") program_counter = 0;
+	vector<string> parsed;
+	istringstream iss(check);
+	string word;
+	while(iss >> word)
+	{
+		parsed.push_back(word);
+	}
 
 	program_counter = sp->execute(d,this,program_counter,direction,x,y);
+
+	if(parsed[0] == "go" && seen == false) program_counter = sp->execute(d,this,program_counter,direction,x,y);
+
+	seen = true;
 }
 
 int main()
@@ -236,8 +276,23 @@ int main()
 	z.addCreature(&h2,4,3);
 	z.addCreature(&h3,4,4);
 	z.addCreature(&h4,3,4);
-	//z.addCreature(&f2,7,7);
-	z.run(4);
+	z.addCreature(&f2,7,7);
+	z.run(5);
+
+
+
+
+	Darwin z2 = Darwin(9,7);
+	Creature t1 = Creature(&trap,3);
+	Creature t2 = Creature(&trap,0);
+	Creature r1 = Creature(&rover,1);
+
+	z2.addCreature(&t1,0,0);
+	z2.addCreature(&h2,2,3);
+	z2.addCreature(&r1,4,5);
+	z2.addCreature(&t2,8,6);
+
+	z2.run(5);
 
 	//z.addCreature(Creature(&food,2)0,0);
 

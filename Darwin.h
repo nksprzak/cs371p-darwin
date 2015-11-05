@@ -40,12 +40,15 @@ public:
 	int program_counter;
 	int direction;
 
+	bool seen;
+
 	Species *sp;
 
 	Creature(Species *s, int direction) {
 		sp = s;
 		this->direction = direction;
 		program_counter = 0;
+		seen = false;
 	}
 
 	void turn(Darwin* d, int x, int y);
