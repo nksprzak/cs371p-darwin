@@ -21,22 +21,28 @@ class Darwin;
 class Creature;
 
 class Species {
-public:
+private:
 	vector<string> instructions;
-
+	
 	char letter;
-
+public:
 	Species(char);
 
 	int execute(Darwin* darwin, Creature* creature, int pc, int direction, int x, int y);
-
+	
 	void addInstruction(string i);
+	
+	friend std::ostream& operator << (std::ostream& os, const Species& sp)
+	{
+		os << sp.letter;
+		return os;
+	}
 };
 
 
 class Creature {
-//private:
-public: 
+
+private: 
 	int program_counter;
 	int direction;
 
@@ -55,16 +61,20 @@ public:
 	}
 
 	void turn(Darwin* d, int x, int y, bool turn);
-
 	void turn_left();
 	void turn_right();
 	void go(int x);
 	void infect(Species* newsp);
-//	string control(string contr, int pc_change);
 
 	friend bool operator == (const Creature& lhs, const Creature& rhs)
 	{
 		return lhs.sp == rhs.sp;
+	}
+
+	friend ostream& operator << (std::ostream& os, const Creature& cr)
+	{
+		os << (*cr.sp);
+		return os;
 	}
 
 };
@@ -72,11 +82,8 @@ public:
 
 class Darwin {
 // private:
-public:
-	//vector<vector<Creature > > grid;
-
+private:
 	vector < vector <Creature *> >  grid;
-	
 
 	int row;
 	int col;
@@ -86,61 +93,20 @@ public:
 
 	bool cur_turn = false;
 public:
-
 	Darwin(int x, int y);
 
+	void run(int x);
+	void hop(int new_x, int new_y, int old_x, int old_y);
 	void printGrid();
-
 	void addCreature(Creature *c, int x , int y);
-
 	void infect(Species *s, Creature* c, int x, int y);
 
+
 	bool enemy(Species* sp, int x,int y);
-
 	bool empty(int x, int y);
-
-	void run(int x);
-
-	// void creature_turn(Creature *c, int x, int y);
-
-	void hop(int new_x, int new_y, int old_x, int old_y);
-
 	bool is_wall_at(int x, int y);
-
 	bool is_empty(int x, int y);
-
 	bool is_enemy(Creature* c, int x, int y);
-
-	Creature* creature_at(int direction, int x, int y);
-
-	// friend ostream& operator << (ostream& os, Darwin d){
-	// 	os << " ";
-	// 	for(int i =0; i < row; i++)
-	// 	{
-	// 		cout << i%10;
-	// 	}
-	// 	cout << endl;
-	// 	for(int j = 0; j < col; j++)
-	// 	{
-	// 		cout << j%10;
-	// 		for(int k = 0; k < row; k++)
-	// 		{
-	// 			if(grid[j][k] == nullptr)
-	// 			{
-	// 				os << ".";
-	// 			}
-	// 			else
-	// 			{
-	// 				Character& c = *grid[j][k];
-	// 				os << c;
-	// 			}
-	// 		}
-	// 		os << endl;
-	// 	}
-
-	// }
-
-
 };
 
 

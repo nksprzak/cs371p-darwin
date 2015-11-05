@@ -1,16 +1,8 @@
 #include "Darwin.h"
 
-std::ostream& operator << (std::ostream& os, Species& sp)
-{
-	os << sp.letter;
-	return os;
-}
 
-std::ostream& operator << (std::ostream& os, Creature& cr)
-{
-	os << (*cr.sp);
-	return os;
-}
+
+
 
 //  std::ostream& operator << (std::ostream& os, Darwin& d)
 //  {
