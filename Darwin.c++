@@ -104,28 +104,7 @@ void Darwin::hop(int new_x, int new_y, int old_x, int old_y)
 		
 	}
 		
-	// int x_fwd, y_fwd;
-	// if(direction%2 == 0)
-	// {
-	// 	x_fwd = x + direction - 1;
-	// 	y_fwd = y;
-	// }
-	// else 
-	// {
-	// 	x_fwd = x;
-	// 	y_fwd = y + direction - 2;
-	// }
 
-
-	// cout << x_fwd << " " << y_fwd << endl;
-	// if(y_fwd == row || x_fwd == col) cout << "";
-
-
-	// else if( !(y_fwd < 0 || x_fwd < 0 || x_fwd >= col || y_fwd <=row) grid[y_fwd][x_fwd] == 0)
-	// {
-	// 	grid[y_fwd][x_fwd] = grid[y][x];
-	// 	grid[y][x] = nullptr;
-	// }
 	
 }
 
@@ -145,24 +124,12 @@ void Darwin::run(int x)
 			{
 				//assert(grid[j][k]->seen);
 				if(grid[j][k])
-				{
-					//cout << j << " " << k << endl;
-					
+				{	
 					grid[j][k]->turn(this,k,j, cur_turn);
-					//grid[j][k]->seen = true;
 				} 
 			}
 		}
 		cur_turn = !cur_turn;
-		// for(int j = 0; j < row; j++)
-		// {
-		// 	for(int k = 0; k < col; k++)
-		// 	{
-		// 		if(grid[j][k])
-		// 		{
-		// 			grid[j][k]->seen = false;
-		// 		}		// 	}
-		// }
 		printGrid();
 		cout << endl;
 	}
@@ -189,14 +156,6 @@ void Species::addInstruction(string i)
 	instructions.push_back(i);
 }
 
-
-/*string Creature::control(string contr, int pc_change)
-{
-	if(contr == "go")
-	{
-		program_counter = pc_change;
-	}
-}*/
 
 
 bool Darwin::is_enemy(Creature *c, int x, int y)
@@ -342,84 +301,3 @@ void Creature::infect(Species* newsp)
 }
 
 
-int main()
-{
-	Darwin z = Darwin(8,8);
-
-	Species food = Species('f');
-	food.addInstruction("left");
-	food.addInstruction("go 0");
-
-	Species hopper = Species('h');
-	hopper.addInstruction("hop");
-	hopper.addInstruction("go 0");
-
-	Species rover = Species('r');
-	rover.addInstruction("if_enemy 9");
-	rover.addInstruction("if_empty 7");
-	rover.addInstruction("if_random 5");
-	rover.addInstruction("left");
-	rover.addInstruction("go 0");
-	rover.addInstruction("right");
-	rover.addInstruction("go 0");
-	rover.addInstruction("hop");
-	rover.addInstruction("go 0");
-	rover.addInstruction("infect");
-	rover.addInstruction("go 0");
-
-	Species trap = Species('t');
-	trap.addInstruction("if_enemy 3");
-	trap.addInstruction("left");
-	trap.addInstruction("go 0");
-	trap.addInstruction("infect");
-	trap.addInstruction("go 0");
-
-
-	Creature f1 = Creature(&food,2);
-	Creature h1 = Creature(&hopper,1);
-	Creature h2 = Creature(&hopper,2);
-	Creature h3 = Creature(&hopper,3);
-	Creature h4 = Creature(&hopper,0);
-	Creature f2 = Creature(&food,1);
-
-	z.addCreature(&f1,0,0);
-	z.addCreature(&h1,3,3);
-	z.addCreature(&h2,4,3);
-	z.addCreature(&h3,4,4);
-	z.addCreature(&h4,3,4);
-	z.addCreature(&f2,7,7);
-	z.run(5);
-
-	Darwin z2 = Darwin(9,7);
-	Creature t1 = Creature(&trap,3);
-	Creature t2 = Creature(&trap,0);
-	Creature r1 = Creature(&rover,1);
-
-	z2.addCreature(&t1,0,0);
-	z2.addCreature(&h2,2,3);
-	z2.addCreature(&r1,4,5);
-	z2.addCreature(&t2,8,6);
-
-	z2.run(6);
-
-	//cout << z2 << endl;
-	/*Darwin z3 = Darwin(72,72);
-
-	z3.printGrid();*/
-
-	//z.addCreature(Creature(&food,2)0,0);
-
-
-	/*Creature test = Creature(&food,0);
-	Creature test1 = Creature(&food,0);
-
-
-	z.addCreature(&test,0,0);
-	z.addCreature(&test1,1,0);
-	
-
-	z.run(3);
-	z.hop(2,0,0);
-	z.printGrid();*/
-	return 0;
-}

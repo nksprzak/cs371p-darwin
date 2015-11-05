@@ -13,6 +13,7 @@
 #include <iostream>  // cout, endl
 #include <stdexcept> // invalid_argument, out_of_range
 
+#include "Darwin.h"
 // ----
 // main
 // ----
@@ -28,6 +29,9 @@ int main () {
      0: left
      1: go 0
     */
+    Species food = Species('f');
+    food.addInstruction("left");
+    food.addInstruction("go 0");
 
     // ------
     // hopper
@@ -37,6 +41,11 @@ int main () {
      0: hop
      1: go 0
     */
+
+    Species hopper = Species('h');
+    hopper.addInstruction("hop");
+    hopper.addInstruction("go 0");
+
 
     // -----
     // rover
@@ -56,6 +65,21 @@ int main () {
     10: go 0
     */
 
+
+    Species rover = Species('r');
+    rover.addInstruction("if_enemy 9");
+    rover.addInstruction("if_empty 7");
+    rover.addInstruction("if_random 5");
+    rover.addInstruction("left");
+    rover.addInstruction("go 0");
+    rover.addInstruction("right");
+    rover.addInstruction("go 0");
+    rover.addInstruction("hop");
+    rover.addInstruction("go 0");
+    rover.addInstruction("infect");
+    rover.addInstruction("go 0");
+
+
     // ----
     // trap
     // ----
@@ -67,12 +91,35 @@ int main () {
      3: infect
      4: go 0
     */
+    Species trap = Species('t');
+    trap.addInstruction("if_enemy 3");
+    trap.addInstruction("left");
+    trap.addInstruction("go 0");
+    trap.addInstruction("infect");
+    trap.addInstruction("go 0");
 
     // ----------
     // darwin 8x8
     // ----------
 
     cout << "*** Darwin 8x8 ***" << endl;
+    Darwin z = Darwin(8,8);
+
+
+    Creature f1 = Creature(&food,2);
+    Creature h1 = Creature(&hopper,1);
+    Creature h2 = Creature(&hopper,2);
+    Creature h3 = Creature(&hopper,3);
+    Creature h4 = Creature(&hopper,0);
+    Creature f2 = Creature(&food,1);
+
+    z.addCreature(&f1,0,0);
+    z.addCreature(&h1,3,3);
+    z.addCreature(&h2,4,3);
+    z.addCreature(&h3,4,4);
+    z.addCreature(&h4,3,4);
+    z.addCreature(&f2,7,7);
+    z.run(5);
     /*
     8x8 Darwin
     Food,   facing east,  at (0, 0)
@@ -91,6 +138,17 @@ int main () {
 
     cout << "*** Darwin 7x9 ***" << endl;
     srand(0);
+    Darwin z2 = Darwin(9,7);
+    Creature t1 = Creature(&trap,3);
+    Creature t2 = Creature(&trap,0);
+    Creature r1 = Creature(&rover,1);
+
+    z2.addCreature(&t1,0,0);
+    z2.addCreature(&h2,2,3);
+    z2.addCreature(&r1,4,5);
+    z2.addCreature(&t2,8,6);
+
+    z2.run(6);
     /*
     7x9 Darwin
     Trap,   facing south, at (0, 0)
@@ -108,6 +166,43 @@ int main () {
 
     cout << "*** Darwin 72x72 without Best ***" << endl;
     srand(0);
+    Darwin z3 = Darwin(72,72);
+
+    Creature foods[10];
+    for(int i = 0; i < 10; i++)
+    {
+        int direct = rand() % 4;
+        int pos = rand() % 5184;
+        foods[i]= Creature(&food,direct);
+        z3.addCreature(&foods[i],pos/72,pos%72);
+    }
+  //  z3.addCreature(&trap,rand())
+    Creature hops[10];
+    for(int i = 0; i < 10; i++)
+    {
+        int direct = rand() % 4;
+        int pos = rand() % 5184;
+        hops[i] = Creature(&hopper,direct);
+        z3.addCreature(&hops[i],pos/72,pos%72);
+    }
+     Creature rovers[10];
+    for(int i = 0; i < 10; i++)
+    {
+        int direct = rand() % 4;
+        int pos = rand() % 5184;
+        rovers[i] = Creature(&rover,direct);
+        z3.addCreature(&rovers[i],pos/72,pos%72);
+    }
+     Creature traps[10];
+    for(int i = 0; i < 10; i++)
+    {
+        int direct = rand() % 4;
+        int pos = rand() % 5184;
+        traps[i] = Creature(&trap,direct);
+        z3.addCreature(&traps[i],pos/72,pos%72);
+    }
+    
+    z3.run(10);
     /*
     Randomly place the following creatures facing randomly.
     Call rand(), mod it with 5184 (72x72), and use that for the position

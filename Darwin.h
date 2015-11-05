@@ -45,6 +45,8 @@ public:
 	Species *sp;
 public:
 
+	Creature() {};
+
 	Creature(Species *s, int direction) {
 		sp = s;
 		this->direction = direction;
