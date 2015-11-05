@@ -57,7 +57,7 @@ void Darwin::run(int x)
 		{
 			for(int k = 0; k < col; k++ )
 			{
-				if(grid[j][k]) creature_turn(grid[j][k],j,k);
+				if(grid[j][k]) grid[j][k]->turn(this,k,j);
 			}
 		}
 		printGrid();
@@ -66,20 +66,7 @@ void Darwin::run(int x)
 }
 
 
-void Darwin::creature_turn(Creature* c, int x, int y)
-{
-	int pc = c->program_counter;
-	cout << c->sp->instructions[pc] << endl;
-	c->program_counter = pc++;
-}
-
-void Creature::go(int x)
-{
-	program_counter = x;
-}
-
-
-/*int Species::execute(Darwin* darwin, Creature* creature, int pc, int direction, int x, int y)
+int Species::execute(Darwin* darwin, Creature* creature, int pc, int direction, int x, int y)
 {
 	string exe = instructions[pc];
 	vector<string> exe_parsed;
@@ -103,14 +90,8 @@ void Creature::go(int x)
 		//cout << word << endl;
 	}
 	//cout << exe_parsed[1];
-	if(exe_parsed[0] == "go")
-	{
-		creature->go(stoi(exe_parsed[1]));
-		return 0;
-	}
 	if(exe == "left")
-	{	
-		//cout << "afdsaf";
+	{
 		creature->turn_left();
 		return ++pc;
 	}
@@ -131,7 +112,7 @@ void Creature::go(int x)
 	}
 
 	
-}*/
+}
 
 void Darwin::infect(Creature *c, int x, int y)
 {
@@ -174,10 +155,10 @@ void Creature::turn_right()
 	direction++;
 	direction %=4;
 }
-/*void Creature::turn(Darwin* d, int x, int y)
+void Creature::turn(Darwin* d, int x, int y)
 {
 	program_counter = sp->execute(d,this,program_counter,direction,x,y);
-}*/
+}
 
 int main()
 {
