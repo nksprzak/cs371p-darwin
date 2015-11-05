@@ -50,7 +50,12 @@ Darwin::Darwin(int x, int y)
 
 void Darwin::run(int x)
 {
-	for(int i = 0; i < x; i++)
+
+	cout << "Turn = 0." << endl;
+	printGrid();
+	cout << endl;
+
+	for(int i = 1; i < x; i++)
 	{
 		cout << "Turn = " << i << "." << endl;
 		for(int j = 0; j < row; j++)
@@ -64,6 +69,14 @@ void Darwin::run(int x)
 		cout << endl;
 	}
 }
+
+/*string Creature::control(string contr, int pc_change)
+{
+	if(contr == "go")
+	{
+		program_counter = pc_change;
+	}
+}*/
 
 
 int Species::execute(Darwin* darwin, Creature* creature, int pc, int direction, int x, int y)
@@ -88,6 +101,19 @@ int Species::execute(Darwin* darwin, Creature* creature, int pc, int direction, 
 	{
 		exe_parsed.push_back(word);
 		//cout << word << endl;
+	}
+
+	cout << creature->program_counter;
+	if(exe_parsed[0] == "go")
+	{
+		///cout << exe_parsed[0];
+		//exe = creature->control(exe_parsed[0],stoi(exe_parsed[1]));
+		//exe = creature->sp->instructions[0];
+		//exe = instructions[0];
+		//string exe_n = instructions[0];
+		//cout << instructions[0];
+		//return execute(darwin,creature,0,direction,x,y);
+		return 0;
 	}
 	//cout << exe_parsed[1];
 	if(exe == "left")
@@ -137,7 +163,7 @@ void Darwin::hop(int direction, int x, int y)
 		x_fwd = x;
 		y_fwd = y + direction - 2;
 	}
-	if(grid[y_fwd][x_fwd] == 0 && (y_fwd > 0 || x_fwd > 0))
+	if(grid[y_fwd][x_fwd] == 0 && (y_fwd > 0 || x_fwd > 0) || (y_fwd < row && x_fwd < col))
 	{
 		grid[y_fwd][x_fwd] = grid[y][x];
 		grid[y][x] = nullptr;
@@ -157,6 +183,11 @@ void Creature::turn_right()
 }
 void Creature::turn(Darwin* d, int x, int y)
 {
+
+	string check = sp->instructions[program_counter];
+
+	if(check == "go") program_counter = 0;
+
 	program_counter = sp->execute(d,this,program_counter,direction,x,y);
 }
 
@@ -202,10 +233,10 @@ int main()
 
 	z.addCreature(&f1,0,0);
 	z.addCreature(&h1,3,3);
-	/*z.addCreature(&h2,3,4);
+	z.addCreature(&h2,4,3);
 	z.addCreature(&h3,4,4);
-	z.addCreature(&h4,4,3);
-	z.addCreature(&f2,7,7);*/
+	z.addCreature(&h4,3,4);
+	//z.addCreature(&f2,7,7);
 	z.run(4);
 
 	//z.addCreature(Creature(&food,2)0,0);

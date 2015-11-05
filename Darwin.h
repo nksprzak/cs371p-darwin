@@ -28,7 +28,7 @@ public:
 
 	Species(char);
 
-	//int execute(Darwin* darwin, Creature* creature, int pc, int direction, int x, int y);
+	int execute(Darwin* darwin, Creature* creature, int pc, int direction, int x, int y);
 
 	void addInstruction(string i);
 };
@@ -53,6 +53,7 @@ public:
 	void turn_left();
 	void turn_right();
 	void go(int x);
+	string control(string contr, int pc_change);
 };
 
 
