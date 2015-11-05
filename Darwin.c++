@@ -1,16 +1,5 @@
 #include "Darwin.h"
 
-
-
-
-
-//  std::ostream& operator << (std::ostream& os, Darwin& d)
-//  {
-//  	d.printGrid(os);
-// 	return os;
-// }
-
-
 int Darwin::forward_x(int direction, int x)
 {
 	if(direction%2 == 0)
