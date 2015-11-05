@@ -1,5 +1,24 @@
 #include "Darwin.h"
 
+std::ostream& operator << (std::ostream& os, Species& sp)
+{
+	os << sp.letter;
+	return os;
+}
+
+std::ostream& operator << (std::ostream& os, Creature& cr)
+{
+	os << (*cr.sp);
+	return os;
+}
+
+//  std::ostream& operator << (std::ostream& os, Darwin& d)
+//  {
+//  	d.printGrid(os);
+// 	return os;
+// }
+
+
 int Darwin::forward_x(int direction, int x)
 {
 	if(direction%2 == 0)
@@ -31,7 +50,7 @@ void Darwin::printGrid()
 			{
 				cout << ".";
 			}
-			else cout << grid[j][k]->sp->letter;
+			else cout << (*grid[j][k]);
 		}
 		cout << endl;
 	}
@@ -127,7 +146,7 @@ void Darwin::run(int x)
 				//assert(grid[j][k]->seen);
 				if(grid[j][k])
 				{
-					cout << j << " " << k << endl;
+					//cout << j << " " << k << endl;
 					
 					grid[j][k]->turn(this,k,j, cur_turn);
 					//grid[j][k]->seen = true;
@@ -225,7 +244,7 @@ int Species::execute(Darwin* darwin, Creature* creature, int pc, int direction, 
 		while(iss >> word)
 		{
 			exe_parsed.push_back(word);
-			cout << word << endl;
+			//cout << word << endl;
 		}
 
 		//cout << creature->program_counter;
@@ -237,7 +256,7 @@ int Species::execute(Darwin* darwin, Creature* creature, int pc, int direction, 
 
 		if(exe_parsed[0] == "if_enemy")
 		{
-			cout << "enemy check" << endl;
+			//cout << "enemy check" << endl;
 			if(darwin->is_enemy(creature, x_fwd, y_fwd))
 				pc = stoi(exe_parsed[1]);
 			else ++pc;
@@ -245,7 +264,7 @@ int Species::execute(Darwin* darwin, Creature* creature, int pc, int direction, 
 		}
 		if(exe_parsed[0] == "if_empty")
 		{
-			cout << "empty check" << endl;
+			//cout << "empty check" << endl;
 			if(darwin->is_empty(x_fwd, y_fwd))
 				pc = stoi(exe_parsed[1]);
 			else ++pc;
@@ -369,7 +388,7 @@ int main()
 	z.addCreature(&h3,4,4);
 	z.addCreature(&h4,3,4);
 	z.addCreature(&f2,7,7);
-	//z.run(5);
+	z.run(5);
 
 	Darwin z2 = Darwin(9,7);
 	Creature t1 = Creature(&trap,3);
@@ -383,7 +402,7 @@ int main()
 
 	z2.run(6);
 
-
+	//cout << z2 << endl;
 	/*Darwin z3 = Darwin(72,72);
 
 	z3.printGrid();*/
@@ -397,7 +416,7 @@ int main()
 
 	z.addCreature(&test,0,0);
 	z.addCreature(&test1,1,0);
-
+	
 
 	z.run(3);
 	z.hop(2,0,0);

@@ -111,6 +111,33 @@ public:
 
 	Creature* creature_at(int direction, int x, int y);
 
+	// friend ostream& operator << (ostream& os, Darwin d){
+	// 	os << " ";
+	// 	for(int i =0; i < row; i++)
+	// 	{
+	// 		cout << i%10;
+	// 	}
+	// 	cout << endl;
+	// 	for(int j = 0; j < col; j++)
+	// 	{
+	// 		cout << j%10;
+	// 		for(int k = 0; k < row; k++)
+	// 		{
+	// 			if(grid[j][k] == nullptr)
+	// 			{
+	// 				os << ".";
+	// 			}
+	// 			else
+	// 			{
+	// 				Character& c = *grid[j][k];
+	// 				os << c;
+	// 			}
+	// 		}
+	// 		os << endl;
+	// 	}
+
+	// }
+
 
 };
 
