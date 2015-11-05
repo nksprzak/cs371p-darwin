@@ -27,7 +27,6 @@ void Darwin::printGrid()
 		cout << j%10;
 		for(int k = 0; k < row; k++)
 		{
-			//assert(grid[j][k]);
 			if(grid[j][k] == nullptr)
 			{
 				cout << ".";
@@ -185,6 +184,17 @@ void Species::addInstruction(string i)
 }*/
 
 
+bool Darwin::enemy(Species *sp, int x, int y)
+{
+	return false;
+}
+
+bool Darwin::empty(int x, int y)
+{
+	//return (grid[y][x] == nullptr);
+	return true;
+}
+
 int Species::execute(Darwin* darwin, Creature* creature, int pc, int direction, int x, int y)
 {
 	int x_fwd;
@@ -275,8 +285,6 @@ int Species::execute(Darwin* darwin, Creature* creature, int pc, int direction, 
 	
 }
 
-
-
 void Creature::turn_left()
 {
 	direction --;
@@ -300,7 +308,6 @@ void Creature::turn(Darwin* d, int x, int y, bool turn)
 		// {
 		// 	parsed.push_back(word);
 		// }
-
 		program_counter = sp->execute(d,this,program_counter,direction,x,y);
 
 		//if(parsed[0] == "go" && seen == false) program_counter = sp->execute(d,this,program_counter,direction,x,y);
@@ -365,9 +372,6 @@ int main()
 	z.addCreature(&f2,7,7);
 	//z.run(5);
 
-
-
-
 	Darwin z2 = Darwin(9,7);
 	Creature t1 = Creature(&trap,3);
 	Creature t2 = Creature(&trap,0);
@@ -378,7 +382,12 @@ int main()
 	z2.addCreature(&r1,4,5);
 	z2.addCreature(&t2,8,6);
 
-	z2.run(5);
+	z2.run(6);
+
+
+	/*Darwin z3 = Darwin(72,72);
+
+	z3.printGrid();*/
 
 	//z.addCreature(Creature(&food,2)0,0);
 

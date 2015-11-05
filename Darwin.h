@@ -58,7 +58,8 @@ public:
 	void turn_right();
 	void go(int x);
 	void infect(Species* newsp);
-	string control(string contr, int pc_change);
+//	string control(string contr, int pc_change);
+
 };
 
 
@@ -86,6 +87,10 @@ public:
 	void addCreature(Creature *c, int x , int y);
 
 	void infect(Species *s, int x, int y);
+
+	bool enemy(Species* sp, int x,int y);
+
+	bool empty(int x, int y);
 
 	void run(int x);
 
