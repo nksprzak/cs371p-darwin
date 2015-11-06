@@ -107,6 +107,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4576462096e0339583f1b8f9fd02f5c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af07cb0bc84accc889d3311c42a5faee0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDarwin.html#af07cb0bc84accc889d3311c42a5faee0">is_enemy</a> (<a class="el" href="classCreature.html">Creature</a> *c, int x, int y)</td></tr>
 <tr class="separator:af07cb0bc84accc889d3311c42a5faee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d62903e3e6bfd14abe154299c2780ed"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classCreature.html">Creature</a> * &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDarwin.html#a7d62903e3e6bfd14abe154299c2780ed">begin</a> ()</td></tr>
+<tr class="separator:a7d62903e3e6bfd14abe154299c2780ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef38197d12dde2bb43ec01c8561c972f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classCreature.html">Creature</a> * &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDarwin.html#aef38197d12dde2bb43ec01c8561c972f">end</a> ()</td></tr>
+<tr class="separator:aef38197d12dde2bb43ec01c8561c972f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c86672e65a935bab64f229125c91e96"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCreature.html">Creature</a> *&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDarwin.html#a4c86672e65a935bab64f229125c91e96">at</a> (size_t n)</td></tr>
+<tr class="separator:a4c86672e65a935bab64f229125c91e96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -187,6 +193,64 @@ Friends</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="a4c86672e65a935bab64f229125c91e96"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCreature.html">Creature</a> *&amp; Darwin::at </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Retrieves a given Creature* at a given index. Index for each creature is determined by when they were added to darwin </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>position for creatures, in order of addition </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>pointer reference to selected <a class="el" href="classCreature.html">Creature</a>. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a7d62903e3e6bfd14abe154299c2780ed"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="classCreature.html">Creature</a> * &gt;::iterator Darwin::begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Produces an iterator to the beginning of the list of creatures in <a class="el" href="classDarwin.html">Darwin</a> </p>
+<dl class="section return"><dt>Returns</dt><dd>vector&lt;Creature*&gt;::iterator of the beginning of creature's list in order of initial addition </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aef38197d12dde2bb43ec01c8561c972f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="classCreature.html">Creature</a> * &gt;::iterator Darwin::end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Produces an iterator to the end of the list of creatures in <a class="el" href="classDarwin.html">Darwin</a> </p>
+<dl class="section return"><dt>Returns</dt><dd>vector&lt;Creature*&gt;::iterator of the end of creature's list in order or initial addition </dd></dl>
 
 </div>
 </div>
@@ -471,7 +535,7 @@ Friends</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 5 2015 18:48:23 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 5 2015 19:58:03 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
