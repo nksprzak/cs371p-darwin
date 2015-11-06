@@ -1,7 +1,7 @@
 FILES :=                              \
     .travis.yml                       \
-    Darwin-tests/nrk423-TestDarwin.c++ \
-    Darwin-tests/nrk423-TestDarwin.out \
+    darwin-tests/nrk423-TestDarwin.c++ \
+    darwin-tests/nrk423-TestDarwin.out \
     Darwin.h                        \
     html                              \
     TestDarwin.c++                    \
