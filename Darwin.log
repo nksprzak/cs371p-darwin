@@ -1,0 +1,219 @@
+commit ffd552d702db3e438fd54a1e8df3a40dcc8e262b
+Author: nksprzak <nksprzak@gmail.com>
+Date:   Fri Nov 6 14:45:21 2015 -0600
+
+    adding more tests
+
+commit 13e00dbcf1e801b9b7e9a5c052ad165cb1c3a38b
+Author: nksprzak <nksprzak@gmail.com>
+Date:   Fri Nov 6 14:23:01 2015 -0600
+
+     adding out files
+
+commit a95a03eb8b79f4b467b6fb791e150f47e64b1abf
+Author: nksprzak <nksprzak@gmail.com>
+Date:   Fri Nov 6 14:14:43 2015 -0600
+
+    fixing for travis
+
+commit fd7a2eb2efb6f9dc45c04d0645b4fa0f5172289e
+Author: nksprzak <nksprzak@gmail.com>
+Date:   Fri Nov 6 14:11:29 2015 -0600
+
+    working
+
+commit 23f9171404d6e82b23eb2d82f63322127032a84c
+Author: Eric Symmank <symmanke@cs.utexas.edu>
+Date:   Fri Nov 6 12:48:42 2015 -0600
+
+    Darwin::run now goes for correct? number of turns. RunDarwin now populates stuff correctly for z3, not z4
+
+commit 4dcf6f8d6c6b60e08bd124e073f4ed2c6c260d21
+Author: nksprzak <nksprzak@gmail.com>
+Date:   Fri Nov 6 12:30:28 2015 -0600
+
+    fixing code
+
+commit d4d2862a4fe913f21fca183b3a7b1229c6b2fbd5
+Author: nksprzak <nksprzak@gmail.com>
+Date:   Thu Nov 5 20:13:26 2015 -0600
+
+    fixing makefile
+
+commit eeb9c458fa3949d919dcc45b5c5785be56202161
+Author: nksprzak <nksprzak@gmail.com>
+Date:   Thu Nov 5 20:10:51 2015 -0600
+
+    getting travis to work
+
+commit 07f18d12538acce9cf5d0fdbfb7bca04e0fdf539
+Author: nksprzak <nksprzak@gmail.com>
+Date:   Thu Nov 5 20:02:07 2015 -0600
+
+    adding tests and travis yml
+
+commit 80637c2ea77c8183fe79da6d8d043bac6e362cc4
+Merge: 72f8ee4 762e0e2
+Author: nksprzak <nksprzak@gmail.com>
+Date:   Thu Nov 5 20:00:05 2015 -0600
+
+    Merge branch 'master' of https://github.com/nksprzak/cs371p-darwin
+
+commit 762e0e27b4f7ffa5198619d53aa3b607ed1188da
+Author: Eric Symmank <symmanke@cs.utexas.edu>
+Date:   Thu Nov 5 19:59:22 2015 -0600
+
+    added iterators and indexing. closes #6 closes #12
+
+commit 72f8ee49419d7ba1f5b170290cd24fe58dbc20f2
+Merge: 0c5bffa 302d5cd
+Author: nksprzak <nksprzak@gmail.com>
+Date:   Thu Nov 5 19:58:11 2015 -0600
+
+    Merge branch 'master' of https://github.com/nksprzak/cs371p-darwin
+
+commit 0c5bffaf717242a463504982eb2f8f27c0ff096f
+Author: nksprzak <nksprzak@gmail.com>
+Date:   Thu Nov 5 19:57:22 2015 -0600
+
+    adding travis file
+
+commit 302d5cd372b032bd48bd266e378b59a308ea1667
+Author: Eric Symmank <symmanke@cs.utexas.edu>
+Date:   Thu Nov 5 19:56:59 2015 -0600
+
+    UML is diagramed. Closes #4
+
+commit d9f34d596791060a30094e510dcb7e908611a9cb
+Author: nksprzak <nksprzak@gmail.com>
+Date:   Thu Nov 5 18:55:19 2015 -0600
+
+    adding more tests
+
+commit 9e4f547cf651eb0bf5e86485a10827d721c33c7a
+Author: Eric Symmank <symmanke@cs.utexas.edu>
+Date:   Thu Nov 5 18:52:05 2015 -0600
+
+    Doxygen comments added, << complete. close #1 close #2 close #3 close #7 close #11 close #9
+
+commit 891cd5e5511cbb88085e463c72ed872c46dd2df6
+Author: nksprzak <nksprzak@gmail.com>
+Date:   Thu Nov 5 18:14:51 2015 -0600
+
+    cleaning up header
+
+commit 360f46acbf57ff04c3335284a7651737d8d1c68e
+Author: Eric Symmank <symmanke@cs.utexas.edu>
+Date:   Thu Nov 5 18:11:35 2015 -0600
+
+    beginning documentation, changed printDarwin to overwritten <<. Closes 1 closes 2 closes 3 closes 7 closes 11
+
+commit 756ff718baf59df8b5bc48874c66cb0a75f8a826
+Author: Eric Symmank <symmanke@cs.utexas.edu>
+Date:   Thu Nov 5 17:28:54 2015 -0600
+
+    added best creature to darwin
+
+commit 6bf16ab182c84a6ba3e7d8f6370befb631d4d94e
+Author: Eric Symmank <symmanke@cs.utexas.edu>
+Date:   Thu Nov 5 16:21:44 2015 -0600
+
+    forgot to commit some overloaded stuff
+
+commit 80744aba826093291d705e504d22c2f39a9dd0c3
+Merge: d7a28b7 33ca820
+Author: Eric Symmank <symmanke@cs.utexas.edu>
+Date:   Thu Nov 5 16:16:59 2015 -0600
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 33ca8203eb850b23dd2ef569af2bc7a2fba18698
+Author: nksprzak <nksprzak@gmail.com>
+Date:   Thu Nov 5 16:16:25 2015 -0600
+
+    delete a.out
+
+commit d7a28b7e2d67e463a8544965d90c07231134a8f1
+Author: Eric Symmank <symmanke@cs.utexas.edu>
+Date:   Thu Nov 5 16:16:05 2015 -0600
+
+    made class variables private
+
+commit 1179d6ea9eb43e934087c21088d1dfd6cae29862
+Author: nksprzak <nksprzak@gmail.com>
+Date:   Thu Nov 5 16:12:16 2015 -0600
+
+    adding rundarwin
+
+commit d6ae558b3b6c1149b8b66866050ba754fc081989
+Author: Eric Symmank <symmanke@cs.utexas.edu>
+Date:   Thu Nov 5 15:54:12 2015 -0600
+
+    overwrote << for creature, darwin
+
+commit 719382e813f84ea7723f2099873feab4bd8ed239
+Author: Eric Symmank <symmanke@cs.utexas.edu>
+Date:   Thu Nov 5 14:49:14 2015 -0600
+
+    working
+
+commit 7708a0f2b56fb89241eb05059fd935f2a9ca9c0f
+Merge: 025946a f34c3ab
+Author: Eric Symmank <symmanke@cs.utexas.edu>
+Date:   Thu Nov 5 14:23:32 2015 -0600
+
+    merge resolved
+
+commit 025946a9ad6c35a61f586396e845dea13b409b12
+Author: Eric Symmank <symmanke@cs.utexas.edu>
+Date:   Thu Nov 5 14:12:54 2015 -0600
+
+    Added control methods, started making things more private
+
+commit f34c3aba79da68654399711045a77e501b5843ea
+Author: nksprzak <nksprzak@gmail.com>
+Date:   Thu Nov 5 12:32:45 2015 -0600
+
+    updating control calls
+
+commit 0ed173bcb3c20265dfc1befef59a2f73cdbff22c
+Author: nksprzak <nksprzak@gmail.com>
+Date:   Thu Nov 5 10:20:38 2015 -0600
+
+    adding hop functinoality
+
+commit 39a08271e275698d83ea0264f4d6dab6bb0c0d0a
+Author: nksprzak <nksprzak@gmail.com>
+Date:   Thu Nov 5 01:55:05 2015 -0600
+
+    changing control
+
+commit 33d085e3945eeb4a3d5924d2164b47e35b6abe9f
+Author: nick <nick@nick-U46E.(none)>
+Date:   Thu Nov 5 00:40:02 2015 -0600
+
+    reverting back to older method
+
+commit 14788ce5b4905608abc8992ec44e25db6b492c5b
+Author: nick <nick@nick-U46E.(none)>
+Date:   Thu Nov 5 00:38:16 2015 -0600
+
+    adding the control and action calls
+
+commit 99401ece32cdd43dfb1bc79c71d22cd9d42c2f02
+Author: nksprzak <nksprzak@gmail.com>
+Date:   Wed Nov 4 16:48:12 2015 -0600
+
+    reworked design
+
+commit f934b9b7856b524c335324922de564d9bc40afb7
+Author: nksprzak <nksprzak@gmail.com>
+Date:   Wed Oct 28 16:36:03 2015 -0500
+
+    adding base darwin and test files
+
+commit fb27a76d0a3b6b78d1c22addfdf0f5cca2c367c7
+Author: nksprzak <nksprzak@gmail.com>
+Date:   Wed Oct 28 14:18:53 2015 -0500
+
+    adding initial files
