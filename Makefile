@@ -9,7 +9,7 @@ FILES :=                              \
 
 CXX        := g++-4.8
 CXXFLAGS   := -pedantic -std=c++11 -Wall
-LDFLAGS    := -lgtest -lgtest_main -pthread
+LDFLAGS    := -lgtest -lgtest_main -pthread 
 GCOV       := gcov-4.8
 GCOVFLAGS  := -fprofile-arcs -ftest-coverage
 VALGRIND   := valgrind
@@ -72,7 +72,7 @@ Doxyfile:
 	doxygen -g
 
 TestDarwin: Darwin.h TestDarwin.c++
-	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) TestDarwin.c++ -o TestDarwin $(LDFLAGS)
+	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) TestDarwin.c++ Darwin.c++ -o TestDarwin $(LDFLAGS)
 
 TestDarwin.tmp: TestDarwin
 	$(VALGRIND) ./TestDarwin                                       >  TestDarwin.tmp 2>&1

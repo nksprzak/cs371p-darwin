@@ -1,10 +1,21 @@
 #include "Darwin.h"
 
+
+
+
+
+//  std::ostream& operator << (std::ostream& os, Darwin& d)
+//  {
+//  	d.printGrid(os);
+// 	return os;
+// }
+
+
 int Darwin::forward_x(int direction, int x)
 {
 	if(direction%2 == 0)
 		return x + direction - 1;
-
+	return x;
 }
 
 int Darwin::forward_y(int direction, int y)
@@ -130,6 +141,7 @@ Darwin::Darwin(int x, int y)
 Species::Species(char l) 
 {
 	letter = l;
+	
 }
 
 void Species::addInstruction(string i)
@@ -280,5 +292,7 @@ void Creature::infect(Species* newsp)
 	program_counter = 0;
 	sp = newsp;
 }
+
+
 
 

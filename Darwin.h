@@ -11,6 +11,8 @@
 #include <cstdlib>
 #include <sstream>
 
+#include "gtest/gtest.h"
+
 
 #ifndef Darwin_h
 #define Darwin_h
@@ -19,6 +21,7 @@ using namespace std;
 
 class Darwin;
 class Creature;
+
 
 /**
  *The species contains the set of instructions that define a creatures
@@ -35,6 +38,7 @@ class Creature;
  *   if_wall x go to line x if the position in front is a wall
  *   if_random x 50% chance that the pc will go to line x. 
  */
+
 class Species {
 private:
 	/**
@@ -42,10 +46,18 @@ private:
 	 */
 	vector<string> instructions;
 
+
 	/**
 	 *letter that determines a Creature's representation on a grid.
 	 */	
+
 	char letter;
+	FRIEND_TEST(TestSpeciesAdd, add1);
+	FRIEND_TEST(TestSpeciesAdd, add2);
+	FRIEND_TEST(TestSpeciesAdd, add3);
+	FRIEND_TEST(TestSpeciesConstructor,con1);
+	FRIEND_TEST(TestSpeciesConstructor,con2);
+	FRIEND_TEST(TestSpeciesConstructor,con3);
 public:
 	Species(char);
 
@@ -58,7 +70,10 @@ public:
 		os << sp.letter;
 		return os;
 	}
+
+
 };
+
 
 class Creature {
 
@@ -69,6 +84,24 @@ private:
 	bool seen;
 
 	Species *sp;
+
+	FRIEND_TEST(TestCreatureTurn, turn1);
+	FRIEND_TEST(TestCreatureTurn, turn2);
+	FRIEND_TEST(TestCreatureTurn, turn3);
+	FRIEND_TEST(TestCreatureRight, right1);
+	FRIEND_TEST(TestCreatureRight, right2);
+	FRIEND_TEST(TestCreatureRight, right3);
+	FRIEND_TEST(TestCreatureLeft, left1);
+	FRIEND_TEST(TestCreatureLeft, left2);
+	FRIEND_TEST(TestCreatureLeft, left3);
+	FRIEND_TEST(TestCreatureInfect, infect1);
+	FRIEND_TEST(TestCreatureInfect, infect2);
+	FRIEND_TEST(TestCreatureInfect, infect3);
+	FRIEND_TEST(TestCreatureEquals, equal1);
+	FRIEND_TEST(TestCreatureEquals, equal2);
+	FRIEND_TEST(TestCreatureEquals, equal3);
+
+
 public:
 
 	Creature() {};
@@ -83,7 +116,7 @@ public:
 	void turn(Darwin* d, int x, int y, bool turn);
 	void turn_left();
 	void turn_right();
-	void go(int x);
+
 	void infected(Species* newsp);
 
 	friend bool operator == (const Creature& lhs, const Creature& rhs)
@@ -96,6 +129,7 @@ public:
 		os << (*cr.sp);
 		return os;
 	}
+
 
 };
 
