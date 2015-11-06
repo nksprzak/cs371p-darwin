@@ -1,0 +1,210 @@
+Running main() from gtest_main.cc
+[==========] Running 60 tests from 20 test cases.
+[----------] Global test environment set-up.
+[----------] 3 tests from TestSpeciesConstructor
+[ RUN      ] TestSpeciesConstructor.con1
+[       OK ] TestSpeciesConstructor.con1 (0 ms)
+[ RUN      ] TestSpeciesConstructor.con2
+[       OK ] TestSpeciesConstructor.con2 (0 ms)
+[ RUN      ] TestSpeciesConstructor.con3
+[       OK ] TestSpeciesConstructor.con3 (0 ms)
+[----------] 3 tests from TestSpeciesConstructor (0 ms total)
+
+[----------] 3 tests from TestSpeciesExecute
+[ RUN      ] TestSpeciesExecute.execute1
+[       OK ] TestSpeciesExecute.execute1 (0 ms)
+[ RUN      ] TestSpeciesExecute.execute2
+[       OK ] TestSpeciesExecute.execute2 (0 ms)
+[ RUN      ] TestSpeciesExecute.execute3
+[       OK ] TestSpeciesExecute.execute3 (0 ms)
+[----------] 3 tests from TestSpeciesExecute (0 ms total)
+
+[----------] 3 tests from TestSpeciesAdd
+[ RUN      ] TestSpeciesAdd.add1
+[       OK ] TestSpeciesAdd.add1 (0 ms)
+[ RUN      ] TestSpeciesAdd.add2
+[       OK ] TestSpeciesAdd.add2 (0 ms)
+[ RUN      ] TestSpeciesAdd.add3
+[       OK ] TestSpeciesAdd.add3 (0 ms)
+[----------] 3 tests from TestSpeciesAdd (0 ms total)
+
+[----------] 3 tests from TestSpeciesPrint
+[ RUN      ] TestSpeciesPrint.print1
+[       OK ] TestSpeciesPrint.print1 (0 ms)
+[ RUN      ] TestSpeciesPrint.print2
+[       OK ] TestSpeciesPrint.print2 (0 ms)
+[ RUN      ] TestSpeciesPrint.print3
+[       OK ] TestSpeciesPrint.print3 (0 ms)
+[----------] 3 tests from TestSpeciesPrint (0 ms total)
+
+[----------] 3 tests from TestCreatureConstr
+[ RUN      ] TestCreatureConstr.con1
+[       OK ] TestCreatureConstr.con1 (0 ms)
+[ RUN      ] TestCreatureConstr.con2
+[       OK ] TestCreatureConstr.con2 (0 ms)
+[ RUN      ] TestCreatureConstr.con3
+[       OK ] TestCreatureConstr.con3 (0 ms)
+[----------] 3 tests from TestCreatureConstr (0 ms total)
+
+[----------] 3 tests from TestCreatureTurn
+[ RUN      ] TestCreatureTurn.turn1
+[       OK ] TestCreatureTurn.turn1 (0 ms)
+[ RUN      ] TestCreatureTurn.turn2
+[       OK ] TestCreatureTurn.turn2 (0 ms)
+[ RUN      ] TestCreatureTurn.turn3
+[       OK ] TestCreatureTurn.turn3 (0 ms)
+[----------] 3 tests from TestCreatureTurn (0 ms total)
+
+[----------] 3 tests from TestCreatureRight
+[ RUN      ] TestCreatureRight.right1
+[       OK ] TestCreatureRight.right1 (0 ms)
+[ RUN      ] TestCreatureRight.right2
+[       OK ] TestCreatureRight.right2 (0 ms)
+[ RUN      ] TestCreatureRight.right3
+[       OK ] TestCreatureRight.right3 (0 ms)
+[----------] 3 tests from TestCreatureRight (0 ms total)
+
+[----------] 3 tests from TestCreatureLeft
+[ RUN      ] TestCreatureLeft.left1
+[       OK ] TestCreatureLeft.left1 (0 ms)
+[ RUN      ] TestCreatureLeft.left2
+[       OK ] TestCreatureLeft.left2 (0 ms)
+[ RUN      ] TestCreatureLeft.left3
+[       OK ] TestCreatureLeft.left3 (0 ms)
+[----------] 3 tests from TestCreatureLeft (0 ms total)
+
+[----------] 3 tests from TestCreatureInfect
+[ RUN      ] TestCreatureInfect.infect1
+[       OK ] TestCreatureInfect.infect1 (0 ms)
+[ RUN      ] TestCreatureInfect.infect2
+[       OK ] TestCreatureInfect.infect2 (0 ms)
+[ RUN      ] TestCreatureInfect.infect3
+[       OK ] TestCreatureInfect.infect3 (0 ms)
+[----------] 3 tests from TestCreatureInfect (0 ms total)
+
+[----------] 3 tests from TestCreatureEquals
+[ RUN      ] TestCreatureEquals.equal1
+[       OK ] TestCreatureEquals.equal1 (0 ms)
+[ RUN      ] TestCreatureEquals.equal2
+[       OK ] TestCreatureEquals.equal2 (0 ms)
+[ RUN      ] TestCreatureEquals.equal3
+[       OK ] TestCreatureEquals.equal3 (0 ms)
+[----------] 3 tests from TestCreatureEquals (0 ms total)
+
+[----------] 3 tests from TestCreaturePrint
+[ RUN      ] TestCreaturePrint.print1
+[       OK ] TestCreaturePrint.print1 (0 ms)
+[ RUN      ] TestCreaturePrint.print2
+[       OK ] TestCreaturePrint.print2 (0 ms)
+[ RUN      ] TestCreaturePrint.print3
+[       OK ] TestCreaturePrint.print3 (0 ms)
+[----------] 3 tests from TestCreaturePrint (0 ms total)
+
+[----------] 3 tests from TestDarwinRun
+[ RUN      ] TestDarwinRun.run1
+Turn = 0.
+ 0
+0.
+
+
+[       OK ] TestDarwinRun.run1 (0 ms)
+[ RUN      ] TestDarwinRun.run2
+Turn = 0.
+ 01
+0h.
+
+
+[       OK ] TestDarwinRun.run2 (0 ms)
+[ RUN      ] TestDarwinRun.run3
+Turn = 0.
+ 01
+0h.
+1..
+2..
+
+
+Turn = 1.
+ 01
+0h.
+1..
+2..
+
+
+[       OK ] TestDarwinRun.run3 (0 ms)
+[----------] 3 tests from TestDarwinRun (0 ms total)
+
+[----------] 3 tests from TestDarwinHop
+[ RUN      ] TestDarwinHop.hop1
+[       OK ] TestDarwinHop.hop1 (0 ms)
+[ RUN      ] TestDarwinHop.hop2
+[       OK ] TestDarwinHop.hop2 (0 ms)
+[ RUN      ] TestDarwinHop.hop3
+[       OK ] TestDarwinHop.hop3 (0 ms)
+[----------] 3 tests from TestDarwinHop (0 ms total)
+
+[----------] 3 tests from TestDarwinAdd
+[ RUN      ] TestDarwinAdd.add1
+[       OK ] TestDarwinAdd.add1 (0 ms)
+[ RUN      ] TestDarwinAdd.add2
+[       OK ] TestDarwinAdd.add2 (0 ms)
+[ RUN      ] TestDarwinAdd.add3
+[       OK ] TestDarwinAdd.add3 (0 ms)
+[----------] 3 tests from TestDarwinAdd (0 ms total)
+
+[----------] 3 tests from TestDarwinInfect
+[ RUN      ] TestDarwinInfect.infect1
+[       OK ] TestDarwinInfect.infect1 (0 ms)
+[ RUN      ] TestDarwinInfect.infect2
+[       OK ] TestDarwinInfect.infect2 (0 ms)
+[ RUN      ] TestDarwinInfect.infect3
+[       OK ] TestDarwinInfect.infect3 (0 ms)
+[----------] 3 tests from TestDarwinInfect (0 ms total)
+
+[----------] 3 tests from TestDarwinWalls
+[ RUN      ] TestDarwinWalls.wall1
+[       OK ] TestDarwinWalls.wall1 (0 ms)
+[ RUN      ] TestDarwinWalls.wall2
+[       OK ] TestDarwinWalls.wall2 (0 ms)
+[ RUN      ] TestDarwinWalls.wall3
+[       OK ] TestDarwinWalls.wall3 (0 ms)
+[----------] 3 tests from TestDarwinWalls (0 ms total)
+
+[----------] 3 tests from TestDarwinEmpty
+[ RUN      ] TestDarwinEmpty.empty1
+[       OK ] TestDarwinEmpty.empty1 (0 ms)
+[ RUN      ] TestDarwinEmpty.empty2
+[       OK ] TestDarwinEmpty.empty2 (0 ms)
+[ RUN      ] TestDarwinEmpty.empty3
+[       OK ] TestDarwinEmpty.empty3 (0 ms)
+[----------] 3 tests from TestDarwinEmpty (0 ms total)
+
+[----------] 3 tests from TestDarwinEnemy
+[ RUN      ] TestDarwinEnemy.enemy1
+[       OK ] TestDarwinEnemy.enemy1 (0 ms)
+[ RUN      ] TestDarwinEnemy.enemy2
+[       OK ] TestDarwinEnemy.enemy2 (0 ms)
+[ RUN      ] TestDarwinEnemy.enemy3
+[       OK ] TestDarwinEnemy.enemy3 (0 ms)
+[----------] 3 tests from TestDarwinEnemy (0 ms total)
+
+[----------] 3 tests from TestDarwinPrints
+[ RUN      ] TestDarwinPrints.print1
+[       OK ] TestDarwinPrints.print1 (0 ms)
+[ RUN      ] TestDarwinPrints.print2
+[       OK ] TestDarwinPrints.print2 (0 ms)
+[ RUN      ] TestDarwinPrints.print3
+[       OK ] TestDarwinPrints.print3 (0 ms)
+[----------] 3 tests from TestDarwinPrints (0 ms total)
+
+[----------] 3 tests from TestDarwinConstru
+[ RUN      ] TestDarwinConstru.con1
+[       OK ] TestDarwinConstru.con1 (0 ms)
+[ RUN      ] TestDarwinConstru.con2
+[       OK ] TestDarwinConstru.con2 (0 ms)
+[ RUN      ] TestDarwinConstru.con3
+[       OK ] TestDarwinConstru.con3 (0 ms)
+[----------] 3 tests from TestDarwinConstru (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 60 tests from 20 test cases ran. (1 ms total)
+[  PASSED  ] 60 tests.

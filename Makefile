@@ -59,7 +59,7 @@ status:
 
 test: TestDarwin.tmp
 
-Darwin-tests:
+darwin-tests:
 	git clone https://github.com/cs371p-fall-2015/darwin-tests.git
 
 html: Doxyfile Darwin.h TestDarwin.c++

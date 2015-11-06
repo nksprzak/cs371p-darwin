@@ -132,7 +132,6 @@ void Darwin::run(int x)
 		{
 			for(int k = 0; k < col; k++ )
 			{
-				//assert(grid[j][k]->seen);
 				if(grid[j][k])
 				{	
 					grid[j][k]->turn(this,k,j, cur_turn);
@@ -246,27 +245,20 @@ int Species::execute(Darwin* darwin, Creature* creature, int pc, int direction, 
 		while(iss >> word)
 		{
 			exe_parsed.push_back(word);
-			//cout << word << endl;
 		}
-
-		//cout << creature->program_counter;
 		if(exe_parsed[0] == "go")
 		{
 			pc = stoi(exe_parsed[1]);
-			//exe = stoi(instructions[exe_parsed[1]]);
 		}
 
 		if(exe_parsed[0] == "if_enemy")
 		{
-			//cout << "enemy check" << endl;
 			if(darwin->is_enemy(creature, x_fwd, y_fwd))
 				pc = stoi(exe_parsed[1]);
 			else ++pc;
-			//return 
 		}
 		if(exe_parsed[0] == "if_empty")
 		{
-			//cout << "empty check" << endl;
 			if(darwin->is_empty(x_fwd, y_fwd))
 				pc = stoi(exe_parsed[1]);
 			else ++pc;
@@ -277,7 +269,6 @@ int Species::execute(Darwin* darwin, Creature* creature, int pc, int direction, 
 				pc = stoi(exe_parsed[1]);
 			else ++pc;
 		}
-		//cout << exe_parsed[1];
 		if(exe == "left")
 		{
 			creature->turn_left();
@@ -299,9 +290,6 @@ int Species::execute(Darwin* darwin, Creature* creature, int pc, int direction, 
 			return ++pc;
 		}	
 	}
-	
-
-	//return 0;
 	
 }
 
