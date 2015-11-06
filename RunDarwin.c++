@@ -178,13 +178,14 @@ int main () {
     Creature t1 = Creature(&trap,3);
     Creature t2 = Creature(&trap,0);
     Creature r1 = Creature(&rover,1);
+    Creature h5 = Creature(&hopper,2);
 
     z2.addCreature(&t1,0,0);
-    z2.addCreature(&h2,2,3);
+    z2.addCreature(&h5,2,3);
     z2.addCreature(&r1,4,5);
     z2.addCreature(&t2,8,6);
 
-    z2.run(6);
+    z2.run(10);
     /*
     7x9 Darwin
     Trap,   facing south, at (0, 0)
@@ -266,39 +267,40 @@ int main () {
 
     for(int i = 0; i < 10; i++)
     {
-        int direct = rand() % 4;
         int pos = rand() % 5184;
+        int direct = rand() % 4;
+        
         foods[i]= Creature(&food,direct);
-        z4.addCreature(&foods[i],pos/72,pos%72);
+        z4.addCreature(&foods[i],pos%72,pos/72);
     }
     for(int i = 0; i < 10; i++)
     {
-        int direct = rand() % 4;
         int pos = rand() % 5184;
+        int direct = rand() % 4;
         hops[i] = Creature(&hopper,direct);
-        z4.addCreature(&hops[i],pos/72,pos%72);
+        z4.addCreature(&hops[i],pos%72,pos/72);
     }
     for(int i = 0; i < 10; i++)
     {
-        int direct = rand() % 4;
         int pos = rand() % 5184;
+        int direct = rand() % 4;
         rovers[i] = Creature(&rover,direct);
-        z4.addCreature(&rovers[i],pos/72,pos%72);
+        z4.addCreature(&rovers[i],pos%72,pos/72);
     }
     for(int i = 0; i < 10; i++)
     {
-        int direct = rand() % 4;
         int pos = rand() % 5184;
+        int direct = rand() % 4;
         traps[i] = Creature(&trap,direct);
-        z4.addCreature(&traps[i],pos/72,pos%72);
+        z4.addCreature(&traps[i],pos%72,pos/72);
     }
     Creature bests[10];
     for(int i = 0; i < 10; i++)
     {
-        int direct = rand() % 4;
         int pos = rand() % 5184;
+        int direct = rand() % 4;
         bests[i] = Creature(&best,direct);
-        z4.addCreature(&bests[i],pos/72,pos%72);
+        z4.addCreature(&bests[i],pos%72,pos/72);
     }
     
 

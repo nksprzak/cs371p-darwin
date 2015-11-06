@@ -103,7 +103,7 @@ void Darwin::hop(int new_x, int new_y, int old_x, int old_y)
 	{
 		if(!is_wall_at(new_x,new_y))
 		{
-			cout << new_x << new_y << endl;
+			//cout << new_x << new_y << endl;
 			/*assert(new_x != row);
 			assert(new_y != col);*/
 			if(is_empty(new_x, new_y))
@@ -139,13 +139,12 @@ void Darwin::run(int x)
 			{
 				if(grid[j][k])
 				{	
-					cout << j << " " << k << endl;
 					grid[j][k]->turn(this,k,j, cur_turn);
 				} 
 			}
 		}
 		cur_turn = !cur_turn;
-		if(i < 10 || !((i)%100))
+		if(i <= 10 || !((i)%100))
 		{
 			cout << "Turn = " << i << "." << endl;
 			cout << *this << endl;
@@ -243,7 +242,7 @@ int Species::execute(Darwin* darwin, Creature* creature, int pc, int direction, 
 	{
 		exe = instructions[pc];
 		istringstream iss(exe);
-		cout << exe << endl;
+		//cout << exe << endl;
 		if(exe_parsed.size())
 		{
 			exe_parsed.clear();
