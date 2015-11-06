@@ -130,7 +130,7 @@ void Darwin::run(int x)
 	cout << *this << endl;
 	cout << endl;
 
-	for(int i = 1; i < x; i++)
+	for(int i = 1; i <= x; i++)
 	{
 
 		for(int j = 0; j < col; j++)
@@ -145,7 +145,7 @@ void Darwin::run(int x)
 			}
 		}
 		cur_turn = !cur_turn;
-		if(i < 10 || !((i+1)%100))
+		if(i < 10 || !((i)%100))
 		{
 			cout << "Turn = " << i << "." << endl;
 			cout << *this << endl;

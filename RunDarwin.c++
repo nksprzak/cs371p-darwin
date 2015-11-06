@@ -207,35 +207,35 @@ int main () {
     Creature foods[10];
     for(int i = 0; i < 10; i++)
     {
-        int direct = rand() % 4;
         int pos = rand() % 5184;
+        int direct = rand() % 4;
         foods[i]= Creature(&food,direct);
-        z3.addCreature(&foods[i],pos/72,pos%72);
+        z3.addCreature(&foods[i],pos%72,pos/72);
     }
   //  z3.addCreature(&trap,rand())
     Creature hops[10];
     for(int i = 0; i < 10; i++)
     {
-        int direct = rand() % 4;
         int pos = rand() % 5184;
+        int direct = rand() % 4;
         hops[i] = Creature(&hopper,direct);
-        z3.addCreature(&hops[i],pos/72,pos%72);
+        z3.addCreature(&hops[i],pos%72,pos/72);
     }
      Creature rovers[10];
     for(int i = 0; i < 10; i++)
     {
-        int direct = rand() % 4;
         int pos = rand() % 5184;
+        int direct = rand() % 4;
         rovers[i] = Creature(&rover,direct);
-        z3.addCreature(&rovers[i],pos/72,pos%72);
+        z3.addCreature(&rovers[i],pos%72,pos/72);
     }
      Creature traps[10];
     for(int i = 0; i < 10; i++)
     {
-        int direct = rand() % 4;
         int pos = rand() % 5184;
+        int direct = rand() % 4;
         traps[i] = Creature(&trap,direct);
-        z3.addCreature(&traps[i],pos/72,pos%72);
+        z3.addCreature(&traps[i],pos%72,pos/72);
     }
     
     z3.run(1000);
