@@ -1,5 +1,6 @@
 #include "Darwin.h"
 
+
 /**
  *adds a Creature* to darwin's grid
  * @param c Creature* to be added
@@ -309,6 +310,7 @@ void Creature::turn(Darwin* d, int x, int y, bool turn)
 		seen = !seen;	
 	}
 }
+
 
 /**
  *Makes a creature "infected." Infected creatures have their species changed,

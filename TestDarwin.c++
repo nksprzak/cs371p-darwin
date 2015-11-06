@@ -242,7 +242,7 @@ TEST(TestCreatureInfect, infect1)
 	Creature one = Creature(&food,0);
 	Creature two = Creature(&hop,0);
 
-	two.infect(&food);
+	two.infected(&food);
 
 	ASSERT_EQ(two.sp,one.sp);
 }
@@ -253,7 +253,7 @@ TEST(TestCreatureInfect, infect2)
 	Species hop = Species('h');
 	Creature two = Creature(&hop,0);
 
-	two.infect(&food);
+	two.infected(&food);
 
 	ASSERT_EQ(two.program_counter,0);
 }
@@ -265,7 +265,7 @@ TEST(TestCreatureInfect, infect3)
 	Creature one = Creature(&food,0);
 	Creature two = Creature(&hop,0);
 
-	one.infect(&hop);
+	one.infected(&hop);
 
 	ASSERT_EQ(two.sp,one.sp);
 }
@@ -325,18 +325,75 @@ TEST(TestCreaturePrint, print3)
 
 TEST(TestDarwinRun, run1)
 {
-	/*Darwin w = Darwin(1,1);
-	
+	Darwin w = Darwin(1,1);
+	w.run(1);
 	ostringstream o;
-	o << w;*/
-
-	//ASSERT_EQ();
+	o << w;
+	ASSERT_EQ(o.str()," 0\n0.\n");
 }
 TEST(TestDarwinRun, run2)
 {
-	
+	Darwin w = Darwin(2,1);
+	Species hopper = Species('h');
+    hopper.addInstruction("hop");
+    hopper.addInstruction("go 0");
+    Creature test = Creature(&hopper,0);
+    w.addCreature(&test,0,0);
+    w.run(1);
+	ostringstream o;
+	o << w;
+	ASSERT_EQ(o.str()," 01\n0h.\n");
 }
 TEST(TestDarwinRun, run3)
 {
+	Darwin w = Darwin(2,3);
+	Species hopper = Species('h');
+    hopper.addInstruction("hop");
+    hopper.addInstruction("go 0");
+    Creature test = Creature(&hopper,0);
+    w.addCreature(&test,0,0);
+    w.run(2);
+	ostringstream o;
+	o << w;
+	ASSERT_EQ(o.str()," 01\n0h.\n1..\n2..\n");
+}
+
+TEST(TestDarwinHop,hop1)
+{
+	Darwin w = Darwin(2,2);
+	Species hopper = Species('h');
+    hopper.addInstruction("hop");
+    hopper.addInstruction("go 0");
+    Creature test = Creature(&hopper,0);
+    w.addCreature(&test,0,0);
+    w.hop(0,1,0,0);
+    ASSERT_EQ(w.grid[1][0],&test);
+}
+TEST(TestDarwinHop,hop2)
+{
+	Darwin w = Darwin(3,3);
+	Species hopper = Species('h');
+    hopper.addInstruction("hop");
+    hopper.addInstruction("go 0");
+    Creature test = Creature(&hopper,0);
+    w.addCreature(&test,0,1);
+    w.hop(0,2,0,1);
+    ASSERT_EQ(w.grid[2][0],&test);
+}
+TEST(TestDarwinHop,hop3)
+{
+	Darwin w = Darwin(4,4);
+	Species hopper = Species('h');
+    hopper.addInstruction("hop");
+    hopper.addInstruction("go 0");
+    Creature test = Creature(&hopper,0);
+    w.addCreature(&test,1,1);
+    w.hop(0,1,1,1);
+    ASSERT_EQ(w.grid[1][0],&test);
+}
+
+TEST(TestDarwinAdd,add1)
+{
 	
 }
+

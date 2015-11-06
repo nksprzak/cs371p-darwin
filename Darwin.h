@@ -199,6 +199,11 @@ private:
 	 *used to determine if a creature has already taken its turn.
 	 */
 	bool cur_turn = false;
+
+	FRIEND_TEST(TestDarwinHop,hop1);
+	FRIEND_TEST(TestDarwinHop,hop2);
+	FRIEND_TEST(TestDarwinHop,hop3);
+
 public:
 	Darwin(int x, int y);
 
