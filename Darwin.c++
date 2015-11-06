@@ -1,5 +1,32 @@
 #include "Darwin.h"
 
+/**
+ *Produces an iterator to the beginning of the list of creatures in Darwin
+ *@return vector<Creature*>::iterator of the beginning of creature's list in order of initial addition
+ */
+std::vector<Creature*>::iterator Darwin::begin()
+{
+	return creatures.begin();
+}
+
+/**
+ *Produces an iterator to the end of the list of creatures in Darwin
+ *@return vector<Creature*>::iterator of the end of creature's list in order or initial addition
+ */
+std::vector<Creature*>::iterator Darwin::end()
+{
+	return creatures.end();
+}
+
+/**
+ *Retrieves a given Creature* at a given index. Index for each creature is determined by when they were added to darwin
+ *@param index position for creatures, in order of addition
+ *@return pointer reference to selected Creature.
+ */
+Creature*& Darwin::at(size_t index)
+{
+	return creatures.at(index);
+}
 
 /**
  *adds a Creature* to darwin's grid
@@ -10,6 +37,7 @@
 void Darwin::addCreature(Creature* c, int x, int y)
 {
 	grid[y][x] = c;
+	creatures.push_back(c);
 }
 
 /**

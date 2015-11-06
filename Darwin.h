@@ -185,6 +185,8 @@ private:
 	 *Grid in which creatures are held onto.
 	 */
 	vector < vector <Creature *> >  grid;
+
+	vector < Creature * > creatures;
 	/**
 	 *number of rows in Darwin's grid
 	 */
@@ -214,6 +216,9 @@ public:
 	bool is_wall_at(int x, int y);
 	bool is_empty(int x, int y);	
 	bool is_enemy(Creature* c, int x, int y);
+	std::vector<Creature*>::iterator begin();
+	std::vector<Creature*>::iterator end();
+	Creature*& at(size_t n);
 	
 	/**
 	 *writes a representation of darwin's graph to the ostream

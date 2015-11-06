@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['operator_3c_3c',['operator&lt;&lt;',['../classSpecies.html#a6651f7d0183ba1d82930eeac81b5fd48',1,'Species::operator&lt;&lt;()'],['../classCreature.html#accd3f6c93e2656519b3a2b121b289f0d',1,'Creature::operator&lt;&lt;()'],['../classDarwin.html#afd37f883600de95ebf7320655f82e6e9',1,'Darwin::operator&lt;&lt;()']]],
-  ['operator_3d_3d',['operator==',['../classCreature.html#a5a85f35e64fd488ad914cbe50c90ee59',1,'Creature']]]
+  ['infect',['infect',['../classDarwin.html#af080f78398f263efe259e2eb145883c5',1,'Darwin']]],
+  ['infected',['infected',['../classCreature.html#a358b2f63c144336df30ddace424cb541',1,'Creature']]],
+  ['is_5fempty',['is_empty',['../classDarwin.html#a4576462096e0339583f1b8f9fd02f5c6',1,'Darwin']]],
+  ['is_5fenemy',['is_enemy',['../classDarwin.html#af07cb0bc84accc889d3311c42a5faee0',1,'Darwin']]],
+  ['is_5fwall_5fat',['is_wall_at',['../classDarwin.html#a68c3ad34b2c1c1930c06d625e02e86a6',1,'Darwin']]]
 ];
