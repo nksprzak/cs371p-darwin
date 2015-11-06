@@ -626,5 +626,74 @@ TEST(TestDarwinConstru, con3)
 	ASSERT_EQ(w.row,11);
 }
 
+TEST(TestDarwinIterator, it1)
+{
+    Darwin w = Darwin(4,4);
+    ASSERT_EQ(w.begin(),w.end());
+}
 
+TEST(TestDarwinIterator, it2)
+{
+    Darwin w = Darwin(4,4);
+    Species hopper = Species('h');
+    Creature c = Creature(&hopper, 1);
+    w.addCreature(&c,0,0);
+    vector<Creature*>::iterator it = w.begin();
+    ostringstream o;
+    o << **it;
+    ASSERT_EQ("h", o.str());
+}
 
+TEST(TestDarwinIterator, it4)
+{
+    Darwin w = Darwin(4,4);
+    Species hopper = Species('h');
+    Species rover = Species('r');
+    Creature c = Creature(&hopper, 1);
+    Creature c2 = Creature(&rover,1);
+    w.addCreature(&c,0,0);
+    w.addCreature(&c2,0,1);
+    vector<Creature*>::iterator it = w.begin();
+    ostringstream o;
+    o << **it;
+    ASSERT_EQ("h", o.str());
+}
+
+TEST(TestDarwinIterator, it5)
+{
+    Darwin w = Darwin(4,4);
+    Species hopper = Species('h');
+    Species rover = Species('r');
+    Creature c = Creature(&hopper, 1);
+    Creature c2 = Creature(&rover,1);
+    w.addCreature(&c,0,0);
+    w.addCreature(&c2,0,1);
+    ostringstream o;
+    for(vector<Creature*>::iterator it = w.begin(); it != w.end(); ++it)
+    {
+        o << **it;
+    }
+    ASSERT_EQ("hr", o.str());
+}
+
+TEST(TestDarwinAt, at1)
+{
+    Darwin w = Darwin(4,4);
+    Species hopper = Species('h');
+    Creature c = Creature(&hopper, 1);
+    w.addCreature(&c,0,0);
+    ASSERT_EQ(w.at(0),&c);
+
+}
+
+TEST(TestDarwinIterator, at2)
+{
+    Darwin w = Darwin(4,4);
+    Species hopper = Species('h');
+    Species rover = Species('r');
+    Creature c = Creature(&hopper, 1);
+    Creature c2 = Creature(&rover,1);
+    w.addCreature(&c,0,0);
+    w.addCreature(&c2,0,1);
+    ASSERT_EQ(w.at(1),&c2);
+}
