@@ -58,6 +58,7 @@ private:
 	FRIEND_TEST(TestSpeciesConstructor,con1);
 	FRIEND_TEST(TestSpeciesConstructor,con2);
 	FRIEND_TEST(TestSpeciesConstructor,con3);
+
 public:
 	Species(char);
 
@@ -127,6 +128,14 @@ private:
 	FRIEND_TEST(TestCreatureEquals, equal1);
 	FRIEND_TEST(TestCreatureEquals, equal2);
 	FRIEND_TEST(TestCreatureEquals, equal3);
+	FRIEND_TEST(TestDarwinInfect, infect1);
+	FRIEND_TEST(TestDarwinInfect, infect2);
+	FRIEND_TEST(TestDarwinInfect, infect3);
+	FRIEND_TEST(TestCreatureConstr,con1);
+	FRIEND_TEST(TestCreatureConstr,con2);
+	FRIEND_TEST(TestCreatureConstr,con3);
+
+
 
 
 public:
@@ -205,7 +214,14 @@ private:
 	FRIEND_TEST(TestDarwinHop,hop1);
 	FRIEND_TEST(TestDarwinHop,hop2);
 	FRIEND_TEST(TestDarwinHop,hop3);
+	FRIEND_TEST(TestDarwinAdd,add1);
+	FRIEND_TEST(TestDarwinAdd,add2);
+	FRIEND_TEST(TestDarwinAdd,add3);
+	FRIEND_TEST(TestDarwinConstru, con1);
+	FRIEND_TEST(TestDarwinConstru, con2);
+	FRIEND_TEST(TestDarwinConstru, con3);
 
+	
 public:
 	Darwin(int x, int y);
 
