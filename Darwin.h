@@ -65,6 +65,13 @@ public:
 	
 	void addInstruction(string i);
 
+
+	/**
+	 *allows a ostream representation of the Species, which is the letter of its species.
+	 *@param os, ostream& 
+	 *@param sp, species being written to os
+	 *@return os, with sp's letter added
+	 */
 	friend std::ostream& operator << (std::ostream& os, const Species& sp)
 	{
 		os << sp.letter;
@@ -74,15 +81,35 @@ public:
 
 };
 
-
+/**
+ *Creatures populate the grid in Darwin. They contain a program counter, which determines
+ *which instruction in species to execute.
+ */
 class Creature {
 
 private: 
+	/**
+	 *next line in the instructions to execute.
+	 */
 	int program_counter;
+	/**
+	 *direction a creature is facing in the grid;
+	 *0 = west
+	 *1 = north
+	 *2 = east
+	 *3 = south
+	 */
 	int direction;
 
+	/**
+	 *keeps track of if the creature has taken its turn this round of darwin
+	 */
 	bool seen;
 
+	/**
+	 *pointer to the species the creature belongs to. A creature's behaviour
+	 *is determined by its species.
+	 */
 	Species *sp;
 
 	FRIEND_TEST(TestCreatureTurn, turn1);
@@ -103,9 +130,16 @@ private:
 
 
 public:
-
+	/**
+	 *default constructor for creature
+	 */
 	Creature() {};
 
+	/**
+	 *Constructor for creature
+	 *@param s pointer to species for which this creature belongs
+	 *@param direction starting direction for the creature
+	 */
 	Creature(Species *s, int direction) {
 		sp = s;
 		this->direction = direction;
@@ -116,14 +150,25 @@ public:
 	void turn(Darwin* d, int x, int y, bool turn);
 	void turn_left();
 	void turn_right();
-
 	void infected(Species* newsp);
 
+	/**
+	 *comparison between two Creatures.
+	 *@param lhs Creature& being compared
+	 *@param rhs Creature& being compared
+	 *@return bool true if each creature's species is the same, false otherwise.
+	 */
 	friend bool operator == (const Creature& lhs, const Creature& rhs)
 	{
 		return lhs.sp == rhs.sp;
 	}
 
+	/**
+	 *allows a ostream representation of the Creature, which is the letter of its species.
+	 *@param os, ostream& 
+	 *@param cr, creature being written to os
+	 *@return os, with cr's letter added
+	 */
 	friend ostream& operator << (std::ostream& os, const Creature& cr)
 	{
 		os << (*cr.sp);
@@ -136,31 +181,41 @@ public:
 
 class Darwin {
 private:
+	/**
+	 *Grid in which creatures are held onto.
+	 */
 	vector < vector <Creature *> >  grid;
-
+	/**
+	 *number of rows in Darwin's grid
+	 */
 	int row;
+	/**
+	 *number of columns in Darwin's grid
+	 */
 	int col;
 
-	int forward_x(int direction, int x);
-	int forward_y(int direction, int y);
-
+	/**
+	 *Current turn for darwin. Each round it alternates between true and false.
+	 *used to determine if a creature has already taken its turn.
+	 */
 	bool cur_turn = false;
 public:
 	Darwin(int x, int y);
 
 	void run(int x);
 	void hop(int new_x, int new_y, int old_x, int old_y);
-	void printGrid();
 	void addCreature(Creature *c, int x , int y);
 	void infect(Species *s, Creature* c, int x, int y);
-
-
-	bool enemy(Species* sp, int x,int y);
-	bool empty(int x, int y);
 	bool is_wall_at(int x, int y);
 	bool is_empty(int x, int y);	
 	bool is_enemy(Creature* c, int x, int y);
-
+	
+	/**
+	 *writes a representation of darwin's graph to the ostream
+	 *@param os, ostream& 
+	 *@param d, darwin whose graph is being written to os
+	 *@return os, with d's graph added
+	 */
 	friend ostream& operator << (std::ostream& os, const Darwin& d)
 	{
 		os << " ";

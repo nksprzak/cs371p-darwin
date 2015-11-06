@@ -1,58 +1,22 @@
 #include "Darwin.h"
 
-
-
-
-
-//  std::ostream& operator << (std::ostream& os, Darwin& d)
-//  {
-//  	d.printGrid(os);
-// 	return os;
-// }
-
-
-int Darwin::forward_x(int direction, int x)
-{
-	if(direction%2 == 0)
-		return x + direction - 1;
-	return x;
-}
-
-int Darwin::forward_y(int direction, int y)
-{
-	if(direction%2 == 1)
-		return y + direction - 2;
-	return y;
-}
-
-void Darwin::printGrid()
-{
-	cout << " ";
-	for(int i =0; i < row; i++)
-	{
-		cout << i%10;
-	}
-	cout << endl;
-	for(int j = 0; j < col; j++)
-	{
-		cout << j%10;
-		for(int k = 0; k < row; k++)
-		{
-			if(grid[j][k] == nullptr)
-			{
-				cout << ".";
-			}
-			else cout << (*grid[j][k]);
-		}
-		cout << endl;
-	}
-}
-
+/**
+ *adds a Creature* to darwin's grid
+ * @param c Creature* to be added
+ * @param x x position on the grid
+ * @param y y position on the grid 
+ */
 void Darwin::addCreature(Creature* c, int x, int y)
 {
 	grid[y][x] = c;
 }
 
+/**
+ *checks to see if a location on the grid contains a Creature*
+ *@param x x position on the grid
+ *@param y y position on the grid
+ *@return bool true if the grid's location is nullptr, false otherwise
+ */
 bool Darwin::is_empty(int x, int y)
 {
 	 if(!is_wall_at(x, y))
@@ -60,6 +24,13 @@ bool Darwin::is_empty(int x, int y)
 	return false;
 }
 
+/**
+ *checks to see if a location on the grid is a wall. Walls are defined as
+ *locations off the grid
+ *@param x x position on the grid
+ *@param y y position on the grid
+ *@return bool true if the grid's location is invalid, false otherwise
+ */
 bool Darwin::is_wall_at(int x, int y)
 {
 
@@ -67,13 +38,20 @@ bool Darwin::is_wall_at(int x, int y)
 }
 
 
-
+/**
+ *infects Creature on a given position of the grid. Infected creatures have
+ *their species changed to the infecting creature, and their program_counter reset to 0.
+ *@param sp Species* for the Creature to be infected by
+ *@param c Creature* of Creature infecting position on the grid
+ *@param x x position on the grid
+ *@param y y position on the grid
+ */
 void Darwin::infect(Species* sp, Creature* c, int x, int y)
 {
 	if(!is_wall_at(x, y))
 	{
 		if(is_enemy(c, x,y)) //should be is_enemy
-			grid[y][x]->infect(sp);
+			grid[y][x]->infected(sp);
 	}
 	// Creature* to_infect = grid[y][x];
 
@@ -83,6 +61,14 @@ void Darwin::infect(Species* sp, Creature* c, int x, int y)
 	// }
 }
 
+/**
+ *moves a creature one position forward on the grid. Hop will fail
+ *if a creature would move off the grid, or move into another creature
+ *@param new_x x position hopping to on the grid
+ *@param new_y y position hopping to on the grid
+ *@param old_x x position hopping from on the grid
+ *@param old_y y position hopping from on the grid
+ */
 void Darwin::hop(int new_x, int new_y, int old_x, int old_y)
 {
 	if(!is_wall_at(new_x,new_y))
@@ -95,21 +81,24 @@ void Darwin::hop(int new_x, int new_y, int old_x, int old_y)
 		}
 		
 	}
-		
-
 	
 }
 
+/**
+ *Simulates the darwin grid for x turns, priting for the first 10 turns,
+ *then every 100 after
+ *@param x number of turns 
+ */
 void Darwin::run(int x)
 {
 
 	cout << "Turn = 0." << endl;
-	printGrid();
+	cout << *this << endl;
 	cout << endl;
 
 	for(int i = 1; i < x; i++)
 	{
-		cout << "Turn = " << i << "." << endl;
+
 		for(int j = 0; j < row; j++)
 		{
 			for(int k = 0; k < col; k++ )
@@ -122,12 +111,20 @@ void Darwin::run(int x)
 			}
 		}
 		cur_turn = !cur_turn;
-		printGrid();
-		cout << endl;
+		if(i < 10 || !((i+1)%100))
+		{
+			cout << "Turn = " << i << "." << endl;
+			cout << *this << endl;
+			cout << endl;	
+		}
 	}
 }
 
-
+/**
+ *constructor for a Darwin object
+ *@param x number of collumns in the grid.
+ *@param y number of rows in the grid.
+ */
 Darwin::Darwin(int x, int y)
 {
 	this->row = x;
@@ -138,19 +135,33 @@ Darwin::Darwin(int x, int y)
 		
 }
 
+/**
+ *Constructor for species. Species starts with an empty instruction vector.
+ *@param l char used to represent a given species on the grid.
+ */
 Species::Species(char l) 
 {
 	letter = l;
 	
 }
 
+/**
+ *Adds an instruction to the Species. instructions are added to the back of the vector.
+ *@param i String containing the instruction to be added.
+ */
 void Species::addInstruction(string i)
 {
 	instructions.push_back(i);
 }
 
 
-
+/** 
+ *Checks if the creature at the x,y location on the grid is an enemy of a given creature.
+ * Enemys are any creatures that have a different species.
+ * @param c Creature* that the creature at the given grid location is compared to
+ * @param x x location on the grid
+ * @param y y location on the grid
+ */
 bool Darwin::is_enemy(Creature *c, int x, int y)
 {
 	Creature& cr = *c;
@@ -164,7 +175,17 @@ bool Darwin::is_enemy(Creature *c, int x, int y)
 	return false;
 }
 
-
+/**
+ *determines which instruction to execute given a pc. Will cycle through instructions
+ *until an action (hop, turn_left, turn_right, infect) is executed. 
+ *@param darwin Darwin* containing the creature on the grid
+ *@param creature Creature pointer to the creature whose instructions are being executed.
+ *@param pc integer determining which instruction to execute
+ *@param direction integer describing the current facing direction of the creature
+ *@param x x position of the creature on the grid.
+ *@param y y position of the creature on the grid.
+ *@return integer for the next pc to execute.
+ */
 int Species::execute(Darwin* darwin, Creature* creature, int pc, int direction, int x, int y)
 {
 	int x_fwd;
@@ -255,39 +276,46 @@ int Species::execute(Darwin* darwin, Creature* creature, int pc, int direction, 
 	
 }
 
+/**
+ *Changes the creatures direction to the left.
+ */
 void Creature::turn_left()
 {
 	direction --;
 	if(direction < 0) direction = 3;
 }
+/**
+ *Changes the creatures direction to the right.
+ */
 void Creature::turn_right()
 {
 	direction++;
 	direction %=4;
 }
+
+/**
+ *Tell the creature to take its turn. Creatures can only take on turn per round
+ * of Darwin.
+ * @param d pointer to the Darwin the creature is inside.
+ * @param x x position of the creature on the grid.
+ * @param y y position of the creature on the grid.
+ * @bool turn. Creatures will take a turn only if turn == Creature::seen. Seen alternates every time a creature takes a turn.
+ */
 void Creature::turn(Darwin* d, int x, int y, bool turn)
 {
-	//cout << "turn " << (turn == seen) << endl;
 	if(turn == seen)
 	{
-		// string check = sp->instructions[program_counter];
-		// vector<string> parsed;
-		// istringstream iss(check);
-		// string word;
-		// while(iss >> word)
-		// {
-		// 	parsed.push_back(word);
-		// }
 		program_counter = sp->execute(d,this,program_counter,direction,x,y);
-
-		//if(parsed[0] == "go" && seen == false) program_counter = sp->execute(d,this,program_counter,direction,x,y);
-
 		seen = !seen;	
 	}
-	
 }
 
-void Creature::infect(Species* newsp)
+/**
+ *Makes a creature "infected." Infected creatures have their species changed,
+ *and their program counter reset.
+ *@param newsp new species for the creature.
+ **/
+void Creature::infected(Species* newsp)
 {
 	program_counter = 0;
 	sp = newsp;

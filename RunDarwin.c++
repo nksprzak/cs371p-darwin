@@ -238,7 +238,7 @@ int main () {
         z3.addCreature(&traps[i],pos/72,pos%72);
     }
     
-    z3.run(10);
+    z3.run(1000);
     /*
     Randomly place the following creatures facing randomly.
     Call rand(), mod it with 5184 (72x72), and use that for the position
@@ -302,7 +302,7 @@ int main () {
     }
     
 
-    z4.run(10);
+    z4.run(1000);
     /*
     Randomly place the following creatures facing randomly.
     Call rand(), mod it with 5184 (72x72), and use that for the position
