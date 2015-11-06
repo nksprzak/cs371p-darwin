@@ -460,8 +460,8 @@ TEST(TestDarwinAdd,add3)
     hopper.addInstruction("hop");
     hopper.addInstruction("go 0");
     Creature test = Creature(&hopper,0);
-    w.addCreature(&test,4,3);
-    ASSERT_EQ(w.grid[3][4],&test);
+    w.addCreature(&test,3,2);
+    ASSERT_EQ(w.grid[2][3],&test);
 }
 
 TEST(TestDarwinInfect, infect1)
