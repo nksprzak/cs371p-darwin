@@ -62,8 +62,7 @@ bool Darwin::is_empty(int x, int y)
  */
 bool Darwin::is_wall_at(int x, int y)
 {
-
-	return (x < 0 || x >= col || y < 0 || y >= row);
+	return (x < 0 || x >= row || y < 0 || y >= col);
 }
 
 
@@ -100,16 +99,22 @@ void Darwin::infect(Species* sp, Creature* c, int x, int y)
  */
 void Darwin::hop(int new_x, int new_y, int old_x, int old_y)
 {
-	if(!is_wall_at(new_x,new_y))
+	if(new_x != row && new_y != col)
 	{
-		
-		if(is_empty(new_x, new_y))
+		if(!is_wall_at(new_x,new_y))
 		{
-		 	grid[new_y][new_x] = grid[old_y][old_x];
-			grid[old_y][old_x] = nullptr;
-		}
+			cout << new_x << new_y << endl;
+			/*assert(new_x != row);
+			assert(new_y != col);*/
+			if(is_empty(new_x, new_y))
+			{
+			 	grid[new_y][new_x] = grid[old_y][old_x];
+				grid[old_y][old_x] = nullptr;
+			}
 		
+		}
 	}
+	
 	
 }
 
@@ -128,12 +133,13 @@ void Darwin::run(int x)
 	for(int i = 1; i < x; i++)
 	{
 
-		for(int j = 0; j < row; j++)
+		for(int j = 0; j < col; j++)
 		{
-			for(int k = 0; k < col; k++ )
+			for(int k = 0; k < row; k++ )
 			{
 				if(grid[j][k])
 				{	
+					cout << j << " " << k << endl;
 					grid[j][k]->turn(this,k,j, cur_turn);
 				} 
 			}
@@ -157,7 +163,7 @@ Darwin::Darwin(int x, int y)
 {
 	this->row = x;
 	this->col = y;
-	vector<vector<Creature *>> grida(y+10,vector<Creature *>(x+10,nullptr));
+	vector<vector<Creature *>> grida(y,vector<Creature *>(x,nullptr));
 
 	this->grid = grida;
 		
@@ -237,7 +243,7 @@ int Species::execute(Darwin* darwin, Creature* creature, int pc, int direction, 
 	{
 		exe = instructions[pc];
 		istringstream iss(exe);
-		//cout << exe << endl;
+		cout << exe << endl;
 		if(exe_parsed.size())
 		{
 			exe_parsed.clear();
@@ -249,6 +255,7 @@ int Species::execute(Darwin* darwin, Creature* creature, int pc, int direction, 
 		if(exe_parsed[0] == "go")
 		{
 			pc = stoi(exe_parsed[1]);
+			//return 0;
 		}
 
 		if(exe_parsed[0] == "if_enemy")
